@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="icon" type="image/png" href="/favicon.png" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>sailor-mercury-mini-game</title>
+    </head>
+    <body>
+        <main>
+            <div class="game-background"></div>
+            <div class="container">
+                <canvas class="canvasField" width="900" height="550"></canvas>
+                <div class="start">
+                    <h1 class="start__title">🌙 Sailor Mercury 🌙</h1>
+                    <h2 class="start__subtitle">Platform Adventure</h2>
+                    <p class="start__character">Ami Mizuno is the Sailor Mercury, fights against dark forces!</p>
+                    <p class="start__instruction">Jump on platforms, defeat enemies, and win the boss!</p>
+                    <div class="start__controls">
+                        <p>A ⬅️, D ➡️ — Moving | W ⬆️ — Jump | SPACE — Wand attack</p>
+                    </div>
+                    <button class="start__btn">Start</button>
+                </div>
+
+                <div class="faile">
+                    <h2 class="faile__title">💀 Game Over 💀</h2>
+                    <h2 class="faile__subtitle">Sailor Mercury has fallen...</h2>
+                    <p class="faile__recap">The darkness was stronger...</p>
+                    <p class="faile__up" style="color:#ff69b4;">But she'll be back</p>
+                    <button class="faile__btn">Try again</button>
+                </div>
+
+                <div class="winner">
+                    <h2 class="winner__title">🌟 Victory! 🌟</h2>
+                    <h2 class="winner__subtitle">The darkness receded!</h2>
+                    <p class="winner__recup">Sailor Mercury has defeated the Dark Lord!</p>
+                    <p class="winner__up">💖 Thanks for the game! 💖</p>
+                    <button class="winner__btn">Play again</button>
+                </div>
+            </div>
+        </main>
+        <script type="module" src="/src/main.js"></script>
+    </body>
+</html>
