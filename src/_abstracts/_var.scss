@@ -4,10 +4,3 @@ $pink: #ff69b4;
 $full: 100%;
 $flx: flex;
 $col: column;
-
-@mixin flex {
-    display: var.$flx;
-    flex-direction: var.$col;
-    justify-content: var.$ctr;
-    align-items: var.$ctr;
-}
