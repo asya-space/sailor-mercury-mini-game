@@ -41,57 +41,84 @@ function createPlatforms() {
         { x: 4900, y: 200, w: 200 },
     ];
     platData.forEach(platform => {
-        platforms.push({ x: platform.x, y: platform.y, w: platform.w, h: 40, type: 'platform' });
+        const h = platform.w * (224 / 829);
+        platforms.push({ x: platform.x, y: platform.y, w: platform.w, h, type: 'platform' });
     });
 }
 
-createPlatforms();
-
-let inch;
+let unit;
 function drawPlatforms(platform) {
     const px = platform.x - cameraX;
     if (px + platform.w < -10 || px > WIDTH + 10) return;
-    inch = px;
+    unit = px;
 }
 
 // earth/platform for main character
-ground.forEach((item) => {
-    drawPlatforms(item);
-    const grad = ctx.createLinearGradient(0, item.y, 0, item.y + item.h);
-    grad.addColorStop(0, '#E82020');
-    grad.addColorStop(0.3, '#592020');
-    grad.addColorStop(1, '#000000');
-    ctx.fillStyle = grad;
-    ctx.fillRect(inch, item.y, item.w, item.h);
-});
+const basic = new Image();
+basic.src = '/ground.png';
 
-// an other little platforms
-
-const stoneHand = new Image();
-stoneHand.src = "/stone-hand.svg";
-
-stoneHand.onload = () => {
-    platforms.forEach((platform) => {
-        drawPlatforms(platform, inch);
-        ctx.drawImage(stoneHand, platform.x, platform.y, platform.w, platform.h);
+function drawGround() {
+    ground.forEach((item) => {
+        drawPlatforms(item);
+        ctx.drawImage(basic, unit, item.y, item.w, item.h);
     });
 }
-   
-const ONE_LAYER = new Image(),
-      TWO_LAYER = new Image(),
-      THREE_LAYER = new Image(),
-      FOUR_LAYER = new Image(),
-      FIVE_LAYER = new Image(),
-      SIX_LAYER = new Image(),
-      SEVEN_LAYER = new Image(),
-      EIGHT_LAYER = new Image();
 
-ONE_LAYER.src = '/parallax/1.png';
-TWO_LAYER.src = '/parallax/2.png';
-THREE_LAYER.src = '/parallax/3.png';
-FOUR_LAYER.src = '/parallax/4.png';
-FIVE_LAYER.src = '/parallax/5.png';
-SIX_LAYER.src = '/parallax/6.png';
-SEVEN_LAYER.src = '/parallax/7.png';
-EIGHT_LAYER.src = '/parallax/8.png';
+// another little platforms
 
+const stoneHand = new Image();
+stoneHand.src = '/stone-hand2.svg';
+
+function drawHands() {
+    platforms.forEach((platform) => {
+        drawPlatforms(platform);
+        ctx.drawImage(stoneHand, unit, platform.y, platform.w, platform.h);
+    });
+}
+
+const bg2 = new Image();
+bg2.src = '/parallax/2.png';
+
+const bg3 = new Image();
+bg3.src = '/parallax/3.png';
+
+const bg4 = new Image();
+bg4.src = '/parallax/4.png';
+
+const bg5 = new Image();
+bg5.src = '/parallax/5.png';
+
+const bg6 = new Image();
+bg6.src = '/parallax/6.png';
+
+const layers = [
+    { img: bg2, speed: 0.05 },
+    { img: bg3, speed: 0.1 },
+    { img: bg4, speed: 0.15 },
+    { img: bg5, speed: 0.25 },
+    { img: bg6, speed: 0.4 },
+];
+
+function drawParallax() {
+    layers.forEach((layer) => {
+        const x = -cameraX * layer.speed;
+        ctx.drawImage(layer.img, x, 0);
+    });
+}
+
+// draw background + onload before draw rest objects
+const images = [bg2, bg3, bg4, bg5, bg6, stoneHand, basic];
+let loaded = 0;
+
+images.forEach(img => {
+    img.onload = () => {
+        loaded++;
+
+        if (loaded === images.length) {
+            drawParallax();
+            createPlatforms();
+            drawGround();
+            drawHands();
+        }
+    };
+});
