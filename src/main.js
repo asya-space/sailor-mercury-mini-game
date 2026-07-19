@@ -18,10 +18,13 @@ const LEVEL_WIDTH = 5500,
 const platforms = [];
 const ground = [];
 
+const createGround = () => {
+    ground.length = 0;
+    ground.push({ x: 0, y: GROUND_Y, w: LEVEL_WIDTH, h: 50 });
+};
+
 function createPlatforms() {
     platforms.length = 0;
-    // Ground
-    ground.push({ x: 0, y: GROUND_Y, w: LEVEL_WIDTH, h: 50, type: 'ground' });
     // Platforms throughout the level
     const platData = [
         // Section 1 - start area
@@ -40,9 +43,18 @@ function createPlatforms() {
         { x: 4500, y: 380, w: 200 }, { x: 4750, y: 300, w: 150 },
         { x: 4900, y: 200, w: 200 },
     ];
-    platData.forEach(platform => {
-        const h = platform.w * (224 / 829);
-        platforms.push({ x: platform.x, y: platform.y, w: platform.w, h, type: 'platform' });
+
+    platData.forEach((platform, index) => {
+        const img = (index + 1) % 3 === 0
+                    ? bonesPlatform
+                    : stoneHand;
+        const h = platform.w * img.ratio;
+        platforms.push({ 
+            x: platform.x, 
+            y: platform.y, 
+            w: platform.w, 
+            h, 
+            img });
     });
 }
 
@@ -55,24 +67,28 @@ function drawPlatforms(platform) {
 
 // earth/platform for main character
 const basic = new Image();
-basic.src = '/ground.png';
+basic.src = '/oceanRock.png';
 
 function drawGround() {
-    ground.forEach((item) => {
-        drawPlatforms(item);
-        ctx.drawImage(basic, unit, item.y, item.w, item.h);
-    });
+    const tileSize = 50;
+    for (let x = 0; x < LEVEL_WIDTH; x += tileSize) {
+        ctx.drawImage(basic, x - cameraX, GROUND_Y, tileSize, tileSize);
+    }
 }
 
 // another little platforms
+const bonesPlatform = new Image();
+bonesPlatform.src = '/skeleton.png';
+bonesPlatform.ratio = 728 / 876;
 
 const stoneHand = new Image();
 stoneHand.src = '/stone-hand2.svg';
+stoneHand.ratio = 224 / 829;
 
 function drawHands() {
     platforms.forEach((platform) => {
         drawPlatforms(platform);
-        ctx.drawImage(stoneHand, unit, platform.y, platform.w, platform.h);
+        ctx.drawImage(platform.img, unit, platform.y, platform.w, platform.h);
     });
 }
 
@@ -106,8 +122,25 @@ function drawParallax() {
     });
 }
 
+const mercury = new Image();
+mercury.src = '/characters/mercury.svg';
+
+// ctreate an object with main hero
+const heroW = 80;
+const heroH = heroW * (675 / 396);
+const hero = {
+    x: 100,
+    y: 365,
+    w: heroW,
+    h: heroH
+}
+
+function drawMercury() {
+    ctx.drawImage(mercury, hero.x - cameraX, hero.y, hero.w, hero.h);
+}
+
 // draw background + onload before draw rest objects
-const images = [bg2, bg3, bg4, bg5, bg6, stoneHand, basic];
+const images = [bg2, bg3, bg4, bg5, bg6, stoneHand, bonesPlatform, basic, mercury];
 let loaded = 0;
 
 images.forEach(img => {
@@ -116,9 +149,11 @@ images.forEach(img => {
 
         if (loaded === images.length) {
             drawParallax();
+            createGround();
             createPlatforms();
             drawGround();
             drawHands();
+            drawMercury();
         }
     };
 });
