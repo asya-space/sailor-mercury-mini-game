@@ -1,17 +1,13 @@
-import { WIDTH, ctx } from '../utils/canvas.js';
-import { GROUND_Y, LEVEL_WIDTH } from "../constants.js";
-import { cameraX } from '../script.js';
-import { mercury } from '../assets/images.js';
-
 const heroW = 80;
 const heroH = heroW * (675 / 396);
+
+// object of hero just changing hero
 export const hero = {
     x: 100,
     y: 365,
     w: heroW,
-    h: heroH
-}
-
-export function drawMercury() {
-    ctx.drawImage(mercury, hero.x - cameraX, hero.y, hero.w, hero.h);
+    h: heroH,
+    hp: 100,
+    dx: 0, // direction -->
+    speed: 4 // speed for moving
 }
