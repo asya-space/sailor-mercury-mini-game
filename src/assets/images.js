@@ -30,7 +30,7 @@ mercury.src = '/characters/mercury.svg';
 // enemies
 export const enemy1 = new Image();
 enemy1.src = '/characters/monster-1.svg';
-enemy1.ratio = 100 / 78;
+enemy1.ratio = 101 / 78;
 
 export const enemy2 = new Image();
 enemy2.src = '/characters/monster-2.svg';
