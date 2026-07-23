@@ -7,8 +7,10 @@ import { createPlatforms } from './world/platforms.js';
 import { drawParallax } from './world/parallax.js';
 import { drawGround } from './world/ground.js';
 import { drawPlatforms } from './world/platforms.js';
-import { drawMercury } from './hero/hero.js';
+import { drawHero } from './hero/drawHero.js';
 import { drawEnemies } from './enemies/drawEnemies.js';
+import { gameLoop } from './game/loop.js';
+import './game/input.js';
 
 let gameRunning = false;
 export let cameraX = 0;
@@ -17,15 +19,7 @@ export let cameraX = 0;
 preload(images, () => {
     createGround();
     createPlatforms();
-
-    draw();
 });
 
-function draw() {
-    drawParallax();
-    drawGround();
-    drawEnemies();
-    drawPlatforms();
-    drawMercury();
-}
+gameLoop();
 
