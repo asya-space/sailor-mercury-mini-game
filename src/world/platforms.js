@@ -27,8 +27,6 @@ export function createPlatforms() {
 
     platData.forEach((platform, index) => {
         const img = stoneHand;
-                //    ? bonesPlatform
-                //    : stoneHand;
         const h = platform.w * img.ratio;
         platforms.push({ 
             x: platform.x, 
