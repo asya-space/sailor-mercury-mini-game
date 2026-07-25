@@ -8,6 +8,7 @@ export const hero = {
     w: heroW,
     h: heroH,
     hp: 100,
-    dx: 0, // direction -->
-    speed: 4 // speed for moving
+    speed: 5, // speed for moving
+    velocityX: 0,
+    velocityY: 0
 }
