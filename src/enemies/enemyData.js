@@ -1,12 +1,15 @@
 import { enemy1, enemy2, enemy3, enemy4 } from "../assets/images";
 
+// types of enemies
+// description
 export const enemyTypes = {
     purpleMonster: {
         image: enemy1,
         w: 90,
         h: 60 * enemy1.ratio,
         hp: 50,
-        speed: 2,
+        damage: 1,
+        velocityX: 2,
         flying: false
     },
 
@@ -15,8 +18,9 @@ export const enemyTypes = {
         w: 50,
         h: 48 * enemy2.ratio,
         hp: 30,
-        speed: 1,
-        flying: true
+        damage: 1,
+        velocityX: 2,
+        flying: false,
     },
 
     blueMonster: {
@@ -24,7 +28,8 @@ export const enemyTypes = {
         w: 50,
         h: 70 * enemy3.ratio,
         hp: 30,
-        speed: 2,
+        damage: 1,
+        velocityX: 2,
         flying: false
     },
 
@@ -33,7 +38,8 @@ export const enemyTypes = {
         w: 48,
         h: 80 * enemy4.ratio,
         hp: 40,
-        speed: 1,
+        damage: 1,
+        velocityX: 2,
         flying: true
     }
 };
