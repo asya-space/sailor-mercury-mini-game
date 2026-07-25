@@ -1,16 +1,16 @@
 import { ctx, canvas } from '../utils/canvas.js';
 import { images } from '../assets/images.js';
-import { createGround } from '../world/ground.js';
-import { createPlatforms } from '../world/platforms.js';
 import { drawParallax } from '../world/parallax.js';
 import { drawGround } from '../world/ground.js';
 import { drawPlatforms } from '../world/platforms.js';
 import { drawHero } from '../hero/drawHero.js';
 import { drawEnemies } from '../enemies/drawEnemies.js';
 import { updateHero } from '../hero/updateHero.js';
+import { updateEnemies } from '../enemies/updateEnemies.js';
 
 function update() {
     updateHero();
+    updateEnemies();
 }
 
 function draw() {
@@ -20,8 +20,8 @@ function draw() {
 
     drawParallax();
     drawGround();
-    drawEnemies();
     drawPlatforms();
+    drawEnemies();
     drawHero();
 }
 
