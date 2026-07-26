@@ -1,5 +1,5 @@
-import { WIDTH, ctx } from '../utils/canvas.js';
-import { cameraX } from '../script.js';
+import { canvas, ctx } from '../utils/canvas.js';
+import { cameraX } from '../game/camera.js';
 import { stoneHand } from '../assets/images.js'; 
 
 export const platforms = [];
@@ -39,7 +39,7 @@ export function createPlatforms() {
 
 export function getPlatformX(platform) {
     const x = platform.x - cameraX;
-    if (x + platform.w < -10 || x > WIDTH + 10) return null;
+    if (x + platform.w < -10 || x > canvas.width + 10) return null;
     return x;
 }
 
