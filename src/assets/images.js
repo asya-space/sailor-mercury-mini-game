@@ -1,6 +1,6 @@
 // ground
 export const basic = new Image();
-basic.src = '/platforms/oceanRock.png';
+basic.src = '/platforms/iceCave.svg';
 
 // another little platforms
 export const stoneHand = new Image();
