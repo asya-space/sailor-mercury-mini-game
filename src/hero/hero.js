@@ -11,5 +11,7 @@ export const hero = {
     speed: 5, // speed for moving
     velocityX: 0,
     velocityY: 0,
-    alive: true
+    alive: true,
+    jumpPower: -15,
+    onGround: false
 }
