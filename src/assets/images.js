@@ -9,19 +9,20 @@ stoneHand.ratio = 224 / 829;
 
 // parallax
 export const bg1 = new Image();
-bg1.src = '/parallax/1.png';
+bg1.src = '/parallax/5.png';
 
 export const bg2 = new Image();
-bg2.src = '/parallax/2.png';
+bg2.src = '/parallax/4.png';
 
 export const bg3 = new Image();
 bg3.src = '/parallax/3.png';
 
-export const bg4 = new Image();
-bg4.src = '/parallax/4.png';
+export const bg4= new Image();
+bg4.src = '/parallax/2.png';
 
 export const bg5 = new Image();
-bg5.src = '/parallax/5.png';
+bg5.src = '/parallax/1.png';
+
 
 // main character
 export const mercury = new Image();
