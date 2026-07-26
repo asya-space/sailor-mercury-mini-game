@@ -10,6 +10,7 @@ export const enemyTypes = {
         hp: 50,
         damage: 1,
         velocityX: 2,
+        facing: 1,
         flying: false
     },
 
@@ -19,8 +20,9 @@ export const enemyTypes = {
         h: 48 * enemy2.ratio,
         hp: 30,
         damage: 1,
-        velocityX: 2,
+        velocityX: 2, // speed
         flying: false,
+        facing: 1 // mirroring
     },
 
     blueMonster: {
@@ -30,7 +32,8 @@ export const enemyTypes = {
         hp: 30,
         damage: 1,
         velocityX: 2,
-        flying: false
+        facing: 1,
+        flying: false,
     },
 
     redMonster: {
@@ -40,6 +43,7 @@ export const enemyTypes = {
         hp: 40,
         damage: 1,
         velocityX: 2,
-        flying: true
+        facing: 1,
+        flying: true,
     }
 };
