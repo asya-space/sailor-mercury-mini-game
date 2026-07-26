@@ -7,10 +7,12 @@ import { drawHero } from '../hero/drawHero.js';
 import { drawEnemies } from '../enemies/drawEnemies.js';
 import { updateHero } from '../hero/updateHero.js';
 import { updateEnemies } from '../enemies/updateEnemies.js';
+import { updateCamera } from './camera.js';
 
 function update() {
     updateHero();
     updateEnemies();
+    updateCamera();
 }
 
 function draw() {
