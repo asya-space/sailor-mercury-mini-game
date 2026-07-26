@@ -13,6 +13,7 @@ function createEnemies() {
             y,
             leftLimit,
             rightLimit,
+            direction: 1, // speed is always +
             alive: true
         }
     }
@@ -72,38 +73,38 @@ function createEnemies() {
         createEnemy(
             enemyTypes.blueMonster,
             2750,
-            platforms[12].y - enemyTypes.cat.h,
+            platforms[12].y - enemyTypes.blueMonster.h,
             platforms[12].x,
-            platforms[12].x + platforms[12].w - enemyTypes.cat.w
+            platforms[12].x + platforms[12].w - enemyTypes.blueMonster.w
         ),
         createEnemy(
             enemyTypes.blueMonster,
             3600,
-            platforms[16].y - enemyTypes.cat.h,
+            platforms[16].y - enemyTypes.blueMonster.h,
             platforms[16].x,
-            platforms[16].x + platforms[16].w - enemyTypes.cat.w
+            platforms[16].x + platforms[16].w - enemyTypes.blueMonster.w
         ),
         createEnemy(
             enemyTypes.blueMonster,
             4900,
-            platforms[22].y - enemyTypes.cat.h,
+            platforms[22].y - enemyTypes.blueMonster.h,
             platforms[22].x,
-            platforms[22].x + platforms[22].w - enemyTypes.cat.w
+            platforms[22].x + platforms[22].w - enemyTypes.blueMonster.w
         ),
         /* redMonster */
         createEnemy(
             enemyTypes.redMonster,
             1700,
-            platforms[7].y - enemyTypes.cat.h,
+            platforms[7].y - enemyTypes.redMonster.h,
             platforms[7].x,
-            platforms[7].x + platforms[7].w - enemyTypes.cat.w
+            platforms[7].x + platforms[7].w - enemyTypes.redMonster.w
         ),
         createEnemy(
             enemyTypes.redMonster,
             3800,
-            platforms[18].y - enemyTypes.cat.h,
+            platforms[18].y - enemyTypes.redMonster.h,
             platforms[18].x,
-            platforms[18].x + platforms[18].w - enemyTypes.cat.w
+            platforms[18].x + platforms[18].w - enemyTypes.redMonster.w
         )
     );
 }
