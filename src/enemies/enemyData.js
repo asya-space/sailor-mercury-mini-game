@@ -10,7 +10,6 @@ export const enemyTypes = {
         hp: 50,
         damage: 1,
         velocityX: 2,
-        facing: 1,
         flying: false
     },
 
@@ -22,7 +21,6 @@ export const enemyTypes = {
         damage: 1,
         velocityX: 2, // speed
         flying: false,
-        facing: 1 // mirroring
     },
 
     blueMonster: {
@@ -32,7 +30,6 @@ export const enemyTypes = {
         hp: 30,
         damage: 1,
         velocityX: 2,
-        facing: 1,
         flying: false,
     },
 
@@ -43,7 +40,6 @@ export const enemyTypes = {
         hp: 40,
         damage: 1,
         velocityX: 2,
-        facing: 1,
         flying: true,
     }
 };

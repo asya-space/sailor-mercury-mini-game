@@ -8,12 +8,14 @@ export function updateEnemies() {
         if (enemy.x <= enemy.leftLimit ) {
             enemy.x = enemy.leftLimit;
             enemy.direction = 1;
-            enemy.facing = 1;
-        }
+        };
         if (enemy.x >= enemy.rightLimit) {
             enemy.x = enemy.rightLimit;
             enemy.direction = -1;
-            enemy.facing = -1;
+        };
+        if (enemy.flying) {
+            enemy.flightTime += 0.08;
+            enemy.y = enemy.baseY + Math.sin(enemy.flightTime) * 20;
         }
     })
 }

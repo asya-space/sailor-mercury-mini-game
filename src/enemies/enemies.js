@@ -16,7 +16,21 @@ function createEnemies() {
             direction: 1, // speed is always +
             alive: true
         }
-    }
+    };
+
+    function flyingEnemy(type, x, y, leftLimit, rightLimit) {
+        return {
+            ...type, 
+            x, 
+            y,
+            leftLimit,
+            rightLimit,
+            direction: 1,
+            baseY: y,
+            alive: true,
+            flightTime: Math.random() * Math.PI * 2 // random flying
+        }
+    };
     enemies.push(
         /* purpleMonster */
         createEnemy(
@@ -92,21 +106,21 @@ function createEnemies() {
             platforms[22].x + platforms[22].w - enemyTypes.blueMonster.w
         ),
         /* redMonster */
-        createEnemy(
+        flyingEnemy(
             enemyTypes.redMonster,
             1700,
             platforms[7].y - enemyTypes.redMonster.h,
             platforms[7].x,
             platforms[7].x + platforms[7].w - enemyTypes.redMonster.w
         ),
-        createEnemy(
+        flyingEnemy(
             enemyTypes.redMonster,
             3800,
             platforms[18].y - enemyTypes.redMonster.h,
             platforms[18].x,
             platforms[18].x + platforms[18].w - enemyTypes.redMonster.w
         )
-    );
+    )
 }
 
 export { enemies, createEnemies }
