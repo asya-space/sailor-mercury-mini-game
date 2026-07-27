@@ -12,7 +12,10 @@ export const createGround = () => {
 
 export function drawGround() {
     const tileSize = 50;
-    for (let x = 0; x < WORLD_WIDTH; x += tileSize) {
+    const startX = Math.floor(cameraX / tileSize) * tileSize;
+    const endX = cameraX + canvas.width + tileSize;
+
+    for (let x = startX; x < endX; x += tileSize) {
         ctx.drawImage(basic, x - cameraX, GROUND_Y, tileSize, tileSize);
-    };
+    }
 }
