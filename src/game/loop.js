@@ -8,11 +8,13 @@ import { drawEnemies } from '../enemies/drawEnemies.js';
 import { updateHero } from '../hero/updateHero.js';
 import { updateEnemies } from '../enemies/updateEnemies.js';
 import { updateCamera } from './camera.js';
+import { boss } from '../boss/boss.js';
 
 function update() {
     updateHero();
     updateEnemies();
     updateCamera();
+    boss.update();
 }
 
 function draw() {
@@ -25,6 +27,7 @@ function draw() {
     drawPlatforms();
     drawEnemies();
     drawHero();
+    boss.draw(ctx);
 }
 
 export function gameLoop() {
