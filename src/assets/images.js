@@ -1,10 +1,10 @@
 // ground
 export const basic = new Image();
-basic.src = '/platforms/iceCave.svg';
+basic.src = '/platforms/iceCave.png';
 
 // another little platforms
 export const stoneHand = new Image();
-stoneHand.src = '/platforms/stone-hand2.svg';
+stoneHand.src = '/platforms/stone-hand2.png';
 stoneHand.ratio = 224 / 829;
 
 // parallax
@@ -45,7 +45,11 @@ export const enemy4 = new Image();
 enemy4.src = '/characters/monster-4.svg';
 enemy4.ratio = 661 / 747;
 
-const images = [bg1, bg2, bg3, bg5, basic, stoneHand, mercury, enemy1, enemy2, enemy3, enemy4];
+export const bossImg = new Image();
+bossImg.src = '/characters/boss.svg';
+bossImg.ratio = 483 / 670;
+
+const images = [bg1, bg2, bg3, bg5, basic, stoneHand, mercury, enemy1, enemy2, enemy3, enemy4, bossImg];
 export { images };
 
 
