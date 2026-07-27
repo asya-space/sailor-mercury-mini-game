@@ -1,6 +1,7 @@
 import { hero } from './hero.js';
 import { WORLD_WIDTH, WORLD_HEIGHT } from '../utils/canvas.js';
-import { GROUND_Y } from '../constants.js';
+import { GROUND_Y, GRAVITY } from '../constants.js';
+import { platforms } from '../world/platforms.js';
 
 export function updateHero() {
     if (!hero.alive) return;
@@ -13,7 +14,7 @@ export function updateHero() {
     if (hero.y < 0) hero.y = 0;
     if (hero.y + hero.h > WORLD_HEIGHT) hero.y = WORLD_HEIGHT - hero.h;
     
-    hero.velocityY += 0.5;
+    hero.velocityY += GRAVITY ;
     hero.y += hero.velocityY;
 
     if (hero.y + hero.h >= GROUND_Y) {
@@ -21,4 +22,18 @@ export function updateHero() {
         hero.velocityY = 0;
         hero.onGround = true;
     }
+
+    platforms.forEach((platform) => {
+        const collisionWithPlatform = 
+            hero.x < platform.x + platform.w 
+            && hero.x + hero.w > platform.x 
+            && hero.y + hero.h >= platform.y 
+            && hero.y + hero.h <= platform.y + hero.velocityY;
+
+        if (hero.velocityY > 0 && collisionWithPlatform) {
+            hero.y = platform.y - hero.h;
+            hero.velocityY = 0;
+            hero.onGround = true;
+        };
+    });
 }
