@@ -15,6 +15,6 @@ preload(images, () => {
     createPlatforms();
 
     createEnemies();
-});
 
-gameLoop();
+    gameLoop();
+});
