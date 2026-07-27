@@ -109,16 +109,23 @@ function createEnemies() {
         flyingEnemy(
             enemyTypes.redMonster,
             1700,
+            platforms[2].y - enemyTypes.redMonster.h,
+            platforms[2].x - 100,
+            platforms[2].x + platforms[2].w - enemyTypes.redMonster.w + 100
+        ),
+        flyingEnemy(
+            enemyTypes.redMonster,
+            1700,
             platforms[7].y - enemyTypes.redMonster.h,
-            platforms[7].x,
-            platforms[7].x + platforms[7].w - enemyTypes.redMonster.w
+            platforms[7].x - 100,
+            platforms[7].x + platforms[7].w - enemyTypes.redMonster.w + 100
         ),
         flyingEnemy(
             enemyTypes.redMonster,
             3800,
             platforms[18].y - enemyTypes.redMonster.h,
-            platforms[18].x,
-            platforms[18].x + platforms[18].w - enemyTypes.redMonster.w
+            platforms[18].x - 100,
+            platforms[18].x + platforms[18].w - enemyTypes.redMonster.w + 100
         )
     )
 }

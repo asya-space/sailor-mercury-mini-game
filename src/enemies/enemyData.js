@@ -5,7 +5,7 @@ import { enemy1, enemy2, enemy3, enemy4 } from "../assets/images";
 export const enemyTypes = {
     purpleMonster: {
         image: enemy1,
-        w: 90,
+        w: 100,
         h: 60 * enemy1.ratio,
         hp: 50,
         damage: 1,
