@@ -65,5 +65,5 @@ export const boss = new Boss(200, 4300, 250, {
             left: 4300,
             right: 5450,
             top: 40,
-            bottom: 350
+            bottom: 290
         });
