@@ -2,6 +2,9 @@ import { hero } from './hero.js';
 import { WORLD_WIDTH, WORLD_HEIGHT } from '../utils/canvas.js';
 import { GROUND_Y, GRAVITY } from '../constants.js';
 import { platforms } from '../world/platforms.js';
+import { enemies } from '../enemies/enemies.js';
+import { boss } from '../boss/boss.js';
+import { resolveCollisions } from '../utils/resolveCollisions.js'
 
 export function updateHero() {
     if (!hero.alive) return;
@@ -23,6 +26,7 @@ export function updateHero() {
         hero.onGround = true;
     }
 
+    // collisions hero with platforms
     platforms.forEach((platform) => {
         const collisionWithPlatform = 
             hero.x < platform.x + platform.w 
@@ -36,4 +40,11 @@ export function updateHero() {
             hero.onGround = true;
         };
     });
+
+    // collisions hero with enemies
+    for (const enemy of enemies) {
+        resolveCollisions(hero, enemy);
+    }
+
+    resolveCollisions(hero, boss);
 }
