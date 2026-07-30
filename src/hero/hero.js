@@ -1,4 +1,4 @@
-const heroW = 80;
+const heroW = 60;
 const heroH = heroW * (675 / 396);
 
 // object of hero just changing hero
@@ -13,5 +13,9 @@ export const hero = {
     velocityY: 0,
     alive: true,
     jumpPower: -15,
-    onGround: false
+    onGround: false,
+    direction: 1,
+    isAttacking: false,
+    attackCoolDown: 0,
+    attackDuration: 0
 }
