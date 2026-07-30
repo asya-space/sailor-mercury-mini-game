@@ -7,11 +7,11 @@ const ground = [];
 
 export const createGround = () => {
     ground.length = 0;
-    ground.push({ x: 0, y: GROUND_Y, w: WORLD_WIDTH, h: 50 });
+    ground.push({ x: 0, y: GROUND_Y, w: WORLD_WIDTH, h: 45 });
 };
 
 export function drawGround() {
-    const tileSize = 50;
+    const tileSize = 45;
     const startX = Math.floor(cameraX / tileSize) * tileSize;
     const endX = cameraX + canvas.width + tileSize;
 
