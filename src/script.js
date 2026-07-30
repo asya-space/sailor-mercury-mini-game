@@ -13,8 +13,6 @@ let gameRunning = false;
 preload(images, () => {
     createGround();
     createPlatforms();
-
     createEnemies();
-
     gameLoop();
 });
