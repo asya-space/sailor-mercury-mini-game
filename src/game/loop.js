@@ -9,11 +9,13 @@ import { updateHero } from '../hero/updateHero.js';
 import { updateEnemies } from '../enemies/updateEnemies.js';
 import { updateCamera } from './camera.js';
 import { boss } from '../boss/boss.js';
+import { drawHeroAttack, updateAttacks } from '../hero/heroAttack.js'; 
 
 function update() {
     updateHero();
     updateEnemies();
     updateCamera();
+    updateAttacks();
     boss.update();
 }
 
@@ -27,6 +29,7 @@ function draw() {
     drawPlatforms();
     drawEnemies();
     drawHero();
+    drawHeroAttack();
     boss.draw(ctx);
 }
 

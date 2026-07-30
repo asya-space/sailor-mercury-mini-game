@@ -9,7 +9,7 @@ stoneHand.ratio = 224 / 829;
 
 // parallax
 export const bg1 = new Image();
-bg1.src = '/parallax/5.png';
+bg1.src = '/parallax/5-1.png';
 
 export const bg2 = new Image();
 bg2.src = '/parallax/4.png';
@@ -46,10 +46,14 @@ enemy4.src = '/characters/monster-4.svg';
 enemy4.ratio = 661 / 747;
 
 export const bossImg = new Image();
-bossImg.src = '/characters/boss.svg';
+bossImg.src = '/characters/boss.png';
 bossImg.ratio = 483 / 670;
 
-const images = [bg1, bg2, bg3, bg5, basic, stoneHand, mercury, enemy1, enemy2, enemy3, enemy4, bossImg];
+export const stick = new Image();
+stick.src = '/star-stick.png';
+stick.ratio = 208 / 62;
+
+const images = [bg1, bg2, bg3, bg5, basic, stoneHand, mercury, enemy1, enemy2, enemy3, enemy4, bossImg, stick];
 export { images };
 
 

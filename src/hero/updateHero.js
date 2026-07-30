@@ -1,10 +1,10 @@
 import { hero } from './hero.js';
-import { WORLD_WIDTH, WORLD_HEIGHT } from '../utils/canvas.js';
+import { WORLD_WIDTH, WORLD_HEIGHT, ctx } from '../utils/canvas.js';
 import { GROUND_Y, GRAVITY } from '../constants.js';
 import { platforms } from '../world/platforms.js';
 import { enemies } from '../enemies/enemies.js';
 import { boss } from '../boss/boss.js';
-import { resolveCollisions } from '../utils/resolveCollisions.js'
+import { resolveCollisions } from '../utils/resolveCollisions.js';
 
 export function updateHero() {
     if (!hero.alive) return;
@@ -44,7 +44,7 @@ export function updateHero() {
     // collisions hero with enemies
     for (const enemy of enemies) {
         resolveCollisions(hero, enemy);
-    }
+    };
 
     resolveCollisions(hero, boss);
 }
