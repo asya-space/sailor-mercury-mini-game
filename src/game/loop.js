@@ -9,7 +9,8 @@ import { updateHero } from '../hero/updateHero.js';
 import { updateEnemies } from '../enemies/updateEnemies.js';
 import { updateCamera } from './camera.js';
 import { boss } from '../boss/boss.js';
-import { drawHeroAttack, updateAttacks } from '../hero/heroAttack.js'; 
+import { drawHeroAttack, updateAttacks } from '../hero/heroAttack.js';
+import { drawWeapon } from '../enemies/enemyProjectiles.js';
 
 function update() {
     updateHero();
@@ -30,6 +31,7 @@ function draw() {
     drawEnemies();
     drawHero();
     drawHeroAttack();
+    drawWeapon();
     boss.draw(ctx);
 }
 
