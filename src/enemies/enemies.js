@@ -6,21 +6,30 @@ const enemies = [];
 function createEnemies() {
     enemies.length = 0;
 
-    function createEnemy(type, x, y, leftLimit, rightLimit) {
+    function createEnemy(monsterType, type, x, y, leftLimit, rightLimit) {
         return {
-            ...type,
+            ...monsterType,
+            type,
             x,
             y,
             leftLimit,
             rightLimit,
             direction: 1, // speed is always +
-            alive: true
+            alive: true,
+            cooldownTimer: 0, // currency state
+            chargeTimer: 0,
+            isCharging: false,
+            state: 'walking', // initial state for all enemies
+            timer: 0,
+            shotLeft: 0,
+            shotTimer: 0
         }
     };
 
-    function flyingEnemy(type, x, y, leftLimit, rightLimit) {
+    function flyingEnemy(monsterType, type, x, y, leftLimit, rightLimit) {
         return {
-            ...type, 
+            ...monsterType,
+            type,
             x, 
             y,
             leftLimit,
@@ -28,20 +37,26 @@ function createEnemies() {
             direction: 1,
             baseY: y,
             alive: true,
-            flightTime: Math.random() * Math.PI * 2 // random flying
+            flightTime: Math.random() * Math.PI * 2,
+            state: 'flying',
+            timer: 0,
+            shotLeft: 0,
+            shotTimer: 0
         }
     };
     enemies.push(
         /* purpleMonster */
         createEnemy(
-            enemyTypes.purpleMonster, 
+            enemyTypes.purpleMonster,
+            'purpleMonster',
             450, 
             GROUND_Y - enemyTypes.purpleMonster.h,
             450,
             900
         ),
         createEnemy(
-            enemyTypes.purpleMonster, 
+            enemyTypes.purpleMonster,
+            'purpleMonster',
             1650, 
             GROUND_Y - enemyTypes.purpleMonster.h,
             1650,
@@ -49,6 +64,7 @@ function createEnemies() {
         ),
         createEnemy(
             enemyTypes.purpleMonster,
+            'purpleMonster',
             3150,
             GROUND_Y - enemyTypes.purpleMonster.h,
             3150, 
@@ -56,6 +72,7 @@ function createEnemies() {
         ),
         createEnemy(
             enemyTypes.purpleMonster,
+            'purpleMonster',
             4550,
             GROUND_Y - enemyTypes.purpleMonster.h,
             4550,
@@ -63,7 +80,8 @@ function createEnemies() {
         ),
         /* catMonster */
         createEnemy(
-            enemyTypes.cat, 
+            enemyTypes.cat,
+            'cat',
             1480, 
             platforms[6].y - enemyTypes.cat.h, 
             platforms[6].x, 
@@ -71,6 +89,7 @@ function createEnemies() {
         ),
         createEnemy(
             enemyTypes.cat,
+            'cat',
             2350,
             platforms[10].y - enemyTypes.cat.h,
             platforms[10].x,
@@ -78,6 +97,7 @@ function createEnemies() {
         ),
         createEnemy(
             enemyTypes.cat,
+            'cat',
             4500,
             platforms[20].y - enemyTypes.cat.h,
             platforms[20].x,
@@ -86,6 +106,7 @@ function createEnemies() {
         /* blueMonster */
         createEnemy(
             enemyTypes.blueMonster,
+            'blueMonster',
             2750,
             platforms[12].y - enemyTypes.blueMonster.h,
             platforms[12].x,
@@ -93,6 +114,7 @@ function createEnemies() {
         ),
         createEnemy(
             enemyTypes.blueMonster,
+            'blueMonster',
             3600,
             platforms[16].y - enemyTypes.blueMonster.h,
             platforms[16].x,
@@ -100,6 +122,7 @@ function createEnemies() {
         ),
         createEnemy(
             enemyTypes.blueMonster,
+            'blueMonster',
             4900,
             platforms[22].y - enemyTypes.blueMonster.h,
             platforms[22].x,
@@ -108,6 +131,7 @@ function createEnemies() {
         /* redMonster */
         flyingEnemy(
             enemyTypes.redMonster,
+            'redMonster',
             1700,
             platforms[2].y - enemyTypes.redMonster.h,
             platforms[2].x - 100,
@@ -115,6 +139,7 @@ function createEnemies() {
         ),
         flyingEnemy(
             enemyTypes.redMonster,
+            'redMonster',
             1700,
             platforms[7].y - enemyTypes.redMonster.h,
             platforms[7].x - 100,
@@ -122,6 +147,7 @@ function createEnemies() {
         ),
         flyingEnemy(
             enemyTypes.redMonster,
+            'redMonster',
             3800,
             platforms[18].y - enemyTypes.redMonster.h,
             platforms[18].x - 100,

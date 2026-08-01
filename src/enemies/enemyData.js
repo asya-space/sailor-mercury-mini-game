@@ -1,4 +1,4 @@
-import { enemy1, enemy2, enemy3, enemy4 } from "../assets/images";
+import { enemy1, enemy2, enemy3, enemy4 } from '../assets/images.js';
 
 // types of enemies
 // description
@@ -10,7 +10,13 @@ export const enemyTypes = {
         hp: 50,
         damage: 1,
         velocityX: 2,
-        flying: false
+        flying: false,
+        isAttacking: false,
+        visionRange: 600,
+        attackCooldown: 120, // constanta as monster
+        attackCharge: 45,
+        weaponOffsetX: 2,
+        weaponOffsetY: 40 
     },
 
     cat: {
@@ -21,6 +27,10 @@ export const enemyTypes = {
         damage: 1,
         velocityX: 2, // speed
         flying: false,
+        isAttacking: false,
+        visionRange: 600,
+        attackCooldown: 120,
+        attackCharge: 45
     },
 
     blueMonster: {
@@ -31,6 +41,10 @@ export const enemyTypes = {
         damage: 1,
         velocityX: 2,
         flying: false,
+        isAttacking: false,
+        visionRange: 600,
+        attackCooldown: 120,
+        attackCharge: 45
     },
 
     redMonster: {
@@ -41,5 +55,9 @@ export const enemyTypes = {
         damage: 1,
         velocityX: 2,
         flying: true,
+        isAttacking: false,
+        visionRange: 600, // i can change this if i need, ok? just reminder
+        attackCooldown: 120,
+        attackCharge: 45
     }
 };
