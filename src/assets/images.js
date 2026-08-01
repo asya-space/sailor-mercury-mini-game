@@ -49,11 +49,17 @@ export const bossImg = new Image();
 bossImg.src = '/characters/boss.png';
 bossImg.ratio = 483 / 670;
 
+// weapon
+
 export const stick = new Image();
 stick.src = '/star-stick.png';
 stick.ratio = 208 / 62;
 
-const images = [bg1, bg2, bg3, bg5, basic, stoneHand, mercury, enemy1, enemy2, enemy3, enemy4, bossImg, stick];
+export const starForPurple = new Image();
+starForPurple.src = '/weapon/purpleWeapon.png';
+starForPurple.ratio = 26 / 25;
+
+const images = [bg1, bg2, bg3, bg5, basic, stoneHand, mercury, enemy1, enemy2, enemy3, enemy4, bossImg, stick, starForPurple];
 export { images };
 
 
