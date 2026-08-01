@@ -4,15 +4,6 @@ import { ctx } from '../utils/canvas.js';
 import { cameraX } from '../game/camera.js';
 import { stick } from '../assets/images.js';
 
-// bullets/balls
-export const projectilesObj = {
-    x: 0,
-    y: 0,
-    speed: 0,
-    damage: 0,
-    radius: 8,
-}
-
 const projectiles = [];
 
 function spawnAttacks() {
