@@ -1,0 +1,8 @@
+@use './var.scss';
+
+@mixin flexVision {
+    display: var.$flx;
+    flex-direction: var.$col;
+    justify-content: var.$ctr;
+    align-items: var.$ctr;
+}
