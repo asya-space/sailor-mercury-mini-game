@@ -1,0 +1,44 @@
+import { ctx, canvas } from '../utils/canvas.js';
+import { images } from '../../assets/images.js';
+import { drawParallax } from '../world/parallax.js';
+import { drawGround } from '../world/ground.js';
+import { drawPlatforms } from '../world/platforms.js';
+import { drawHero } from '../hero/drawHero.js';
+import { drawEnemies } from '../enemies/drawEnemies.js';
+import { updateHero } from '../hero/updateHero.js';
+import { updateEnemies } from '../enemies/updateEnemies.js';
+import { updateCamera } from './camera.js';
+import { boss } from '../boss/boss.js';
+import { drawHeroAttack, updateAttacks } from '../hero/heroAttack.js';
+import { drawWeapon } from '../weapon/drawWeapon.js';
+import { enemyProjectiles } from '../weapon/createWeapon.js';
+
+function update() {
+    updateHero();
+    updateEnemies();
+    updateCamera();
+    updateAttacks();
+    boss.update();
+}
+
+function draw() {
+    // clean of each frame
+    // for moving characters, background etc. 
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    drawParallax();
+    drawGround();
+    drawPlatforms();
+    drawEnemies();
+    drawHero();
+    drawHeroAttack();
+    drawWeapon(enemyProjectiles);
+    boss.draw(ctx);
+}
+
+export function gameLoop() {
+    update();
+    draw();
+
+    requestAnimationFrame(gameLoop);
+}
