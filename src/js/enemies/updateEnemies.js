@@ -1,7 +1,7 @@
 import { enemies } from './enemies';
 import { hero } from '../hero/hero.js';
-import { enemyProjectiles } from '../weapon/createWeapon.js';
-import { updateEnemyProjectile } from '../weapon/updateProjectiles.js';
+import { enemyProjectiles } from '../weapon/stars/createWeapon.js';
+import { updateEnemyProjectile } from '../weapon/stars/updateProjectiles.js';
 import { enemyAttackUpdate } from './enemyAttack.js';
 
 function lookingAtHero(enemy, hero) {
@@ -14,7 +14,7 @@ function lookingAtHero(enemy, hero) {
 
     return (heroOnRight && enemy.direction === 1)
            || (!heroOnRight && enemy.direction === -1);
-}
+};
 
 export function updateEnemies() {
     enemies.forEach((enemy) => {
@@ -25,9 +25,8 @@ export function updateEnemies() {
         enemy.x += enemy.velocityX * enemy.direction;
         if (distance <= enemy.visionRange && lookingAtHero(enemy, hero)) { // if hero is too close, enemy will stop walking
             enemyAttackUpdate(enemy);
-        } else {
             enemy.velocityX = 2;
-        }
+        };
 
         if (enemy.x <= enemy.leftLimit) {
             enemy.x = enemy.leftLimit;
