@@ -17,9 +17,9 @@ document.addEventListener('keydown', (event) => {
         hero.onGround = false;
     };
 
-    if (event.code === 'ControlLeft' || event.code === 'ControlRight') {
+    if (event.code === 'ControlLeft' || event.code === 'ControlRight' && !hero.isAttacking) {
         hero.isAttacking = true;
-        hero.attackCoolDown = 5;
+        hero.cooldown = 5;
         hero.attackDuration = 30;
     }
 })
