@@ -1,23 +1,33 @@
 import { ctx, canvas } from '../utils/canvas.js';
 import { images } from '../../assets/images.js';
+
 import { drawParallax } from '../world/parallax.js';
 import { drawGround } from '../world/ground.js';
 import { drawPlatforms } from '../world/platforms.js';
 import { drawHero } from '../hero/drawHero.js';
 import { drawEnemies } from '../enemies/drawEnemies.js';
+import { drawHeroAttack, heroProjectiles } from '../hero/heroAttack.js';
+import { drawWeapon } from '../weapon/stars/drawWeapon.js';
+import { drawCatAttack, drawBlueMonsterAttack } from '../weapon/balls/ballsMonstersProjectiles.js';
+
+import { updateAttacks, updateBallProjectiles } from '../functions.js';
 import { updateHero } from '../hero/updateHero.js';
 import { updateEnemies } from '../enemies/updateEnemies.js';
 import { updateCamera } from './camera.js';
+
 import { boss } from '../boss/boss.js';
-import { drawHeroAttack, updateAttacks } from '../hero/heroAttack.js';
-import { drawWeapon } from '../weapon/drawWeapon.js';
-import { enemyProjectiles } from '../weapon/createWeapon.js';
+import { hero } from '../hero/hero.js';
+
+import { enemyProjectiles } from '../weapon/stars/createWeapon.js';
+import { catProjectiles, blueMonsterProjectiles } from '../weapon/balls/ballsMonstersProjectiles.js';
 
 function update() {
     updateHero();
     updateEnemies();
     updateCamera();
-    updateAttacks();
+    updateAttacks(hero, heroProjectiles);
+    updateBallProjectiles(catProjectiles);
+    updateBallProjectiles(blueMonsterProjectiles);
     boss.update();
 }
 
@@ -33,6 +43,8 @@ function draw() {
     drawHero();
     drawHeroAttack();
     drawWeapon(enemyProjectiles);
+    drawCatAttack();
+    drawBlueMonsterAttack();
     boss.draw(ctx);
 }
 
