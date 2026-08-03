@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   version="1.1"
+   id="svg1"
+   width="147.60233"
+   height="153.56882"
+   viewBox="0 0 147.60233 153.56882"
+   sodipodi:docname="monster-4.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1">
+    <inkscape:page
+       x="0"
+       y="0"
+       width="147.60233"
+       height="153.56882"
+       id="page2"
+       margin="0"
+       bleed="0" />
+  </sodipodi:namedview>
+  <defs
+     id="defs1">
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter2"
+       x="-0.029165931"
+       y="-0.027968536"
+       width="1.0583313"
+       height="1.055938">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="0.56998148"
+         id="feGaussianBlur2" />
+    </filter>
+  </defs>
+  <g
+     inkscape:groupmode="layer"
+     id="layer1"
+     inkscape:label="Layer 1"
+     transform="translate(-116.75402,-3.3905672)">
+    <path
+       style="fill:#f20b0b;fill-opacity:0.87451;stroke:#fffc1c;stroke-width:5.4;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:0.894295;filter:url(#filter2)"
+       d="m 165.5705,56.681792 19.39114,-49.2236615 23.1202,46.2404095 52.20691,11.933009 -38.03646,29.086709 8.20394,55.935982 -44.74878,-23.86602 -46.24041,26.10346 11.1872,-56.681796 -29.83253,-32.815775 z"
+       id="path2" />
+  </g>
+</svg>
