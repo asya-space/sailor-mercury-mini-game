@@ -11,7 +11,7 @@ class Boss {
         this.hp = 200;
         this.phase = 1;
         this.state = 'fly';
-        this.attackCoolDown = 0;
+        this.cooldown = 0;
         this.speed = 7;
         this.alive = true;
         this.area = area;

@@ -16,6 +16,6 @@ export const hero = {
     onGround: false,
     direction: 1,
     isAttacking: false,
-    attackCoolDown: 0,
+    cooldown: 0,
     attackDuration: 0
 }
