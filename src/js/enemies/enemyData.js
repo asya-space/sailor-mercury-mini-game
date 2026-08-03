@@ -13,7 +13,7 @@ export const enemyTypes = {
         flying: false,
         isAttacking: false,
         visionRange: 600,
-        attackCooldown: 120, // constanta as monster
+        cooldown: 120, // constanta as monster
         attackCharge: 45,
         weaponOffsetX: 2,
         weaponOffsetY: 40,
@@ -30,9 +30,10 @@ export const enemyTypes = {
         flying: false,
         isAttacking: false,
         visionRange: 600,
-        attackCooldown: 120,
+        cooldown: 120,
         attackCharge: 45,
-        reverseDirection: false
+        reverseDirection: false,
+        attackDuration: 0
     },
 
     blueMonster: {
@@ -45,9 +46,10 @@ export const enemyTypes = {
         flying: false,
         isAttacking: false,
         visionRange: 600,
-        attackCooldown: 120,
+        cooldown: 120,
         attackCharge: 45,
-        reverseDirection: false
+        reverseDirection: false,
+        attackDuration: 0
     },
 
     redMonster: {
@@ -60,7 +62,7 @@ export const enemyTypes = {
         flying: true,
         isAttacking: false,
         visionRange: 600, // i can change this if i need, ok? just reminder
-        attackCooldown: 120,
+        cooldown: 120,
         attackCharge: 45,
         weaponOffsetX: 48 / 2,
         weaponOffsetY: -2, // not sure
