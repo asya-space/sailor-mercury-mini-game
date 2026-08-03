@@ -1,10 +1,15 @@
 import { enemyTypes } from './enemyData.js';
 import { enemies } from './enemies.js';
+
 import { ctx, WORLD_WIDTH, canvas } from '../utils/canvas.js';
 import { cameraX } from '../game/camera.js';
 import { starForPurple } from '../../assets/images.js';
+
 import { hero } from '../hero/hero.js';
-import { createPurpleStar, createRedStar, enemyProjectiles } from '../weapon/createWeapon.js';
+
+import { createPurpleStar, createRedStar, enemyProjectiles } from '../weapon/stars/createWeapon.js';
+import { catProjectiles, blueMonsterProjectiles } from '../weapon/balls/ballsMonstersProjectiles.js';
+import { spawnAttacks } from '../functions.js';
 
 function enemyAttackUpdate(enemy) {
     // start charging
@@ -37,6 +42,14 @@ function enemyAttackUpdate(enemy) {
 
             if (enemy.type === 'redMonster') {
                 createRedStar(enemy);
+            };
+
+            if (enemy.type === 'cat') {
+                spawnAttacks(catProjectiles, enemy);
+            };
+
+            if (enemy.type === 'blueMonster') {
+                spawnAttacks(blueMonsterProjectiles, enemy);
             }
 
             enemy.shotLeft--;
@@ -45,7 +58,7 @@ function enemyAttackUpdate(enemy) {
                 enemy.shotTimer = 10;
             } else {
                 enemy.state = 'cooldown';
-                enemy.timer = enemy.attackCooldown;
+                enemy.timer = enemy.cooldown;
             };
         };
         return;
@@ -60,6 +73,5 @@ function enemyAttackUpdate(enemy) {
         }
     }
 };
-
 
 export { enemyAttackUpdate };
