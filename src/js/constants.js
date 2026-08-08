@@ -7,4 +7,3 @@ export const GRAVITY = 0.6;
 export const JUMP_FORCE = -13;
 export const MOVE_SPEED = 4.5;
 export const weaponSpeed = 8;
-export const projectiles = [];
