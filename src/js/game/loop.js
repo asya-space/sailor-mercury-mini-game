@@ -10,7 +10,9 @@ import { drawHeroAttack, heroProjectiles } from '../hero/heroAttack.js';
 import { drawWeapon } from '../weapon/stars/drawWeapon.js';
 import { drawCatAttack, drawBlueMonsterAttack } from '../weapon/balls/ballsMonstersProjectiles.js';
 
-import { updateAttacks, updateBallProjectiles } from '../functions.js';
+import { updateBallProjectiles } from '../functions.js';
+import { updateHeroAttacks } from '../hero/heroAttack.js';
+
 import { updateHero } from '../hero/updateHero.js';
 import { updateEnemies } from '../enemies/updateEnemies.js';
 import { updateCamera } from './camera.js';
@@ -20,16 +22,17 @@ import { hero } from '../hero/hero.js';
 
 import { enemyProjectiles } from '../weapon/stars/createWeapon.js';
 import { catProjectiles, blueMonsterProjectiles } from '../weapon/balls/ballsMonstersProjectiles.js';
+import { bossProjectiles } from '../boss/boss.js';
 
 function update() {
     updateHero();
     updateEnemies();
     updateCamera();
-    updateAttacks(hero, heroProjectiles);
+    updateHeroAttacks();
     updateBallProjectiles(catProjectiles);
     updateBallProjectiles(blueMonsterProjectiles);
     boss.update();
-}
+};
 
 function draw() {
     // clean of each frame
@@ -43,14 +46,14 @@ function draw() {
     drawHero();
     drawHeroAttack();
     drawWeapon(enemyProjectiles);
+    drawWeapon(bossProjectiles);
     drawCatAttack();
     drawBlueMonsterAttack();
     boss.draw(ctx);
-}
+};
 
 export function gameLoop() {
     update();
     draw();
-
     requestAnimationFrame(gameLoop);
-}
+};
