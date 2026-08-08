@@ -63,12 +63,16 @@ export const redStar = new Image();
 redStar.src = '/weapon/redStar.png';
 redStar.ratio = 150 / 147;
 
+export const bossStar = new Image();
+bossStar.src = '/weapon/bossStar.png';
+bossStar.ratio = 53 / 48;
+
 const images = [
     bg1, bg2, bg3, bg5, 
     basic, stoneHand, 
     mercury, 
     enemy1, enemy2, enemy3, enemy4, bossImg, 
-    stick, starForPurple, redStar
+    stick, starForPurple, redStar, bossStar
 ];
 export { images };
 
