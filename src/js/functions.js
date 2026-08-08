@@ -25,34 +25,6 @@ function drawBalls(x, y, glowColor, color) {
     ctx.restore();
 };
 
-function updateAttacks(character, array) {
-    if (!character.isAttacking) {
-        array.forEach((item) => { 
-            item.x += item.speed;
-        });
-        return;
-    };
-
-    character.attackDuration--;
-
-    if (character.cooldown > 0) {
-        character.cooldown--;
-    };
-
-    if (character.cooldown <= 0) {
-        spawnAttacks(array, character);
-        character.cooldown = 10;
-    }
-
-    if (character.attackDuration <= 0) {
-            character.isAttacking = false;
-    };
-
-    array.forEach((item) => {
-            item.x += item.speed;
-    });
-};
-
 function updateBallProjectiles(balls) {
     balls.forEach((ball) => {
         ball.x += ball.speed;
@@ -69,6 +41,7 @@ function spawnAttacks(array, character) {
 };
 
 // center of hero + stars-attacks (redMonster, purpleMonster)
+
 function getTargetHeroX() {
     return hero.x + hero.w / 2;
 };
@@ -86,4 +59,4 @@ function weaponStartY(enemy) {
     return enemy.y + enemy.weaponOffsetY;
 };
 
-export { drawBalls, spawnAttacks, getTargetHeroX, getTargetHeroY, weaponStartX, weaponStartY, updateAttacks, updateBallProjectiles }
+export { drawBalls, spawnAttacks, getTargetHeroX, getTargetHeroY, weaponStartX, weaponStartY, updateBallProjectiles }
