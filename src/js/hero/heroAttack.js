@@ -45,4 +45,32 @@ function drawHeroAttack() {
     });
 };
 
-export { heroProjectiles, drawCharge, drawHeroAttack }
+function updateHeroAttacks() {
+    if (!hero.isAttacking) {
+        heroProjectiles.forEach((item) => { 
+            item.x += item.speed;
+        });
+        return;
+    };
+
+    hero.attackDuration--;
+
+    if (hero.cooldown > 0) {
+        hero.cooldown--;
+    };
+
+    if (hero.cooldown <= 0) {
+        spawnAttacks(heroProjectiles, hero);
+        hero.cooldown = 10;
+    }
+
+    if (hero.attackDuration <= 0) {
+            hero.isAttacking = false;
+    };
+
+    heroProjectiles.forEach((item) => {
+            item.x += item.speed;
+    });
+};
+
+export { heroProjectiles, drawCharge, drawHeroAttack, updateHeroAttacks }
