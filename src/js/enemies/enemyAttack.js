@@ -70,8 +70,8 @@ function enemyAttackUpdate(enemy) {
 
         if (enemy.timer <= 0) {
             enemy.state = 'walking';
-        }
-    }
+        };
+    };
 };
 
 export { enemyAttackUpdate };
