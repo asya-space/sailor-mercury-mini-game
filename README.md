@@ -5,7 +5,8 @@ A small 2D platformer inspired by Sailor Moon, built with Vanilla JavaScript and
 The project is currently under active development. At the moment, the core rendering system and basic game objects are being implemented, providing the foundation for future gameplay mechanics.
 
 Screenshot<br>
-<img width="100%" height="939" alt="image" src="https://github.com/user-attachments/assets/8b6fd657-cce7-4c0d-b859-12801093a30d" />
+<img width="100%" height="773" alt="image" src="https://github.com/user-attachments/assets/1f234301-138e-4d0a-8d1a-56439c1a0435" />
+
 
 ## Features
 - HTML5 Canvas rendering
