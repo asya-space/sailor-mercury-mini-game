@@ -20,7 +20,7 @@ function resolveCollisions(hero, enemy) {
             hero.x -= overlapX;
         } else {
             hero.x += overlapX;
-        }
+        };
     } else {
     // vertical collision
         if (heroCtrY < enemyCtrY) {
@@ -30,8 +30,8 @@ function resolveCollisions(hero, enemy) {
         } else {
             hero.y += overlapY;
             hero.velocityY = 0;
-        }
-    }
-}
+        };
+    };
+};
 
 export { resolveCollisions };

@@ -1,13 +1,4 @@
-import { enemyTypes } from './enemyData.js';
-import { enemies } from './enemies.js';
-
-import { ctx, WORLD_WIDTH, canvas } from '../utils/canvas.js';
-import { cameraX } from '../game/camera.js';
-import { starForPurple } from '../../assets/images.js';
-
-import { hero } from '../hero/hero.js';
-
-import { createPurpleStar, createRedStar, enemyProjectiles } from '../weapon/stars/createWeapon.js';
+import { createPurpleStar, createRedStar } from '../weapon/stars/createWeapon.js';
 import { catProjectiles, blueMonsterProjectiles } from '../weapon/balls/ballsMonstersProjectiles.js';
 import { spawnAttacks } from '../functions.js';
 

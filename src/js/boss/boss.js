@@ -1,11 +1,9 @@
-import { ctx } from '../utils/canvas.js';
 import { bossImg, bossStar } from '../../assets/images.js';
 import { cameraX } from '../game/camera.js';
 
 import { weaponSpeed } from '../constants.js';
 import { updateEnemyProjectile } from '../weapon/stars/updateProjectiles.js';
-import { drawWeapon } from '../weapon/stars/drawWeapon.js';
-import { getTargetHeroX, getTargetHeroY /*weaponStartX, weaponStartY*/ } from '../functions.js';
+import { getTargetHeroX, getTargetHeroY } from '../functions.js';
 
 export const bossProjectiles = [];
 

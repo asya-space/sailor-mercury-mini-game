@@ -1,8 +1,5 @@
-import { drawBalls } from '../../functions.js';
-
 import { cameraX } from '../../game/camera.js';
 import { ctx } from '../../utils/canvas.js';
-import { enemyProjectiles } from './createWeapon.js';
 
 function drawWeapon(array) {
     array.forEach((weapon) => {

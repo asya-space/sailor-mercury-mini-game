@@ -1,5 +1,4 @@
 import { hero } from './hero.js';
-import { enemies } from '../enemies/enemies.js';
 
 import { ctx } from '../utils/canvas.js';
 import { cameraX } from '../game/camera.js';

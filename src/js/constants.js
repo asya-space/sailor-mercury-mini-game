@@ -1,6 +1,4 @@
-import { canvas, WORLD_HEIGHT, ctx } from './utils/canvas.js';
-import { cameraX } from './game/camera.js';
-import { hero } from './hero/hero.js';
+import { canvas } from './utils/canvas.js';
 // canvas parameters
 export const GROUND_Y = canvas.height - 45;
 export const GRAVITY = 0.6;
