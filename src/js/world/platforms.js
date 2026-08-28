@@ -25,7 +25,7 @@ export function createPlatforms() {
         { x: 4900, y: 200, w: 200 },
     ];
 
-    platData.forEach((platform, index) => {
+    platData.forEach((platform) => {
         const img = stoneHand;
         const h = platform.w * img.ratio;
         platforms.push({ 
