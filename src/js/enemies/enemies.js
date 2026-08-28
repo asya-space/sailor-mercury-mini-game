@@ -1,159 +1,35 @@
-import { enemyTypes } from './enemyData.js';
-import { platforms } from '../world/platforms.js';
-import { GROUND_Y } from '../constants.js';
+import { platforms } from "../world/platforms";
+import { enemy1, enemy2, enemy3, enemy4 } from "../../assets/images";
+import { Enemy, AirEnemy, GroundMonster } from "./enemyData";
 
 const enemies = [];
-function createEnemies() {
-    enemies.length = 0;
 
-    function createEnemy(monsterType, type, x, y, leftLimit, rightLimit) {
-        return {
-            ...monsterType,
-            type,
-            x,
-            y,
-            leftLimit,
-            rightLimit,
-            direction: 1, // speed is always +
-            alive: true,
-            cooldownTimer: 0, // currency state
-            chargeTimer: 0,
-            isCharging: false,
-            state: 'walking', // initial state for all enemies
-            timer: 0,
-            shotLeft: 0,
-            shotTimer: 0
-        }
-    };
+function createEnemy() {
+    const catMonsters = [
+        new Enemy(enemy2, 50, 48 * enemy2.ratio, 1480, 30, 1, 'catMonster', platforms[6]),
+        new Enemy(enemy2, 50, 48 * enemy2.ratio, 2350, 30, 1, 'catMonster', platforms[10]),
+        new Enemy(enemy2, 50, 48 * enemy2.ratio, 4500, 30, 1, 'catMonster', platforms[20])
+    ];
 
-    function flyingEnemy(monsterType, type, x, y, leftLimit, rightLimit) {
-        return {
-            ...monsterType,
-            type,
-            x, 
-            y,
-            leftLimit,
-            rightLimit,
-            direction: 1,
-            baseY: y,
-            alive: true,
-            flightTime: Math.random() * Math.PI * 2,
-            state: 'flying',
-            timer: 0,
-            shotLeft: 0,
-            shotTimer: 0
-        }
-    };
-    enemies.push(
-        /* purpleMonster */
-        createEnemy(
-            enemyTypes.purpleMonster,
-            'purpleMonster',
-            450, 
-            GROUND_Y - enemyTypes.purpleMonster.h,
-            450,
-            900
-        ),
-        createEnemy(
-            enemyTypes.purpleMonster,
-            'purpleMonster',
-            1650, 
-            GROUND_Y - enemyTypes.purpleMonster.h,
-            1650,
-            2050
-        ),
-        createEnemy(
-            enemyTypes.purpleMonster,
-            'purpleMonster',
-            3150,
-            GROUND_Y - enemyTypes.purpleMonster.h,
-            3150, 
-            3550
-        ),
-        createEnemy(
-            enemyTypes.purpleMonster,
-            'purpleMonster',
-            4550,
-            GROUND_Y - enemyTypes.purpleMonster.h,
-            4550,
-            5000
-        ),
-        /* catMonster */
-        createEnemy(
-            enemyTypes.cat,
-            'cat',
-            1480, 
-            platforms[6].y - enemyTypes.cat.h, 
-            platforms[6].x, 
-            platforms[6].x + platforms[6].w - enemyTypes.cat.w
-        ),
-        createEnemy(
-            enemyTypes.cat,
-            'cat',
-            2350,
-            platforms[10].y - enemyTypes.cat.h,
-            platforms[10].x,
-            platforms[10].x + platforms[10].w - enemyTypes.cat.w 
-        ),
-        createEnemy(
-            enemyTypes.cat,
-            'cat',
-            4500,
-            platforms[20].y - enemyTypes.cat.h,
-            platforms[20].x,
-            platforms[20].x + platforms[20].w - enemyTypes.cat.w
-        ),
-        /* blueMonster */
-        createEnemy(
-            enemyTypes.blueMonster,
-            'blueMonster',
-            2750,
-            platforms[12].y - enemyTypes.blueMonster.h,
-            platforms[12].x,
-            platforms[12].x + platforms[12].w - enemyTypes.blueMonster.w
-        ),
-        createEnemy(
-            enemyTypes.blueMonster,
-            'blueMonster',
-            3600,
-            platforms[16].y - enemyTypes.blueMonster.h,
-            platforms[16].x,
-            platforms[16].x + platforms[16].w - enemyTypes.blueMonster.w
-        ),
-        createEnemy(
-            enemyTypes.blueMonster,
-            'blueMonster',
-            4900,
-            platforms[22].y - enemyTypes.blueMonster.h,
-            platforms[22].x,
-            platforms[22].x + platforms[22].w - enemyTypes.blueMonster.w
-        ),
-        /* redMonster */
-        flyingEnemy(
-            enemyTypes.redMonster,
-            'redMonster',
-            1700,
-            platforms[2].y - enemyTypes.redMonster.h,
-            platforms[2].x - 100,
-            platforms[2].x + platforms[2].w - enemyTypes.redMonster.w + 100
-        ),
-        flyingEnemy(
-            enemyTypes.redMonster,
-            'redMonster',
-            1700,
-            platforms[7].y - enemyTypes.redMonster.h,
-            platforms[7].x - 100,
-            platforms[7].x + platforms[7].w - enemyTypes.redMonster.w + 100
-        ),
-        flyingEnemy(
-            enemyTypes.redMonster,
-            'redMonster',
-            3800,
-            platforms[18].y - enemyTypes.redMonster.h,
-            platforms[18].x - 100,
-            platforms[18].x + platforms[18].w - enemyTypes.redMonster.w + 100
-        )
-    )
-}
+    const blueMonsters = [
+        new Enemy(enemy3, 50, 70 * enemy3.ratio, 2750, 30, 1, 'blueMonster', platforms[12]),
+        new Enemy(enemy3, 50, 70 * enemy3.ratio, 3600, 30, 1, 'blueMonster', platforms[16]),
+        new Enemy(enemy3, 50, 70 * enemy3.ratio, 4900, 30, 1, 'blueMonster', platforms[22])
+    ];
 
-export { enemies, createEnemies }
+    const airMonsters = [
+        new AirEnemy(enemy4, 48, 80 * enemy4.ratio, 1700, 40, 1, 'airMonster', platforms[2]),
+        new AirEnemy(enemy4, 48, 80 * enemy4.ratio, 3800, 40, 1, 'airMonster', platforms[18])
+    ];
+
+    const groundMonsters = [
+        new GroundMonster(enemy1, 100, 60 * enemy1.ratio, 450, 50, 1, 'groundMonster', 450, 900),
+        new GroundMonster(enemy1, 100, 60 * enemy1.ratio, 1650, 50, 1, 'groundMonster', 1650, 2050),
+        new GroundMonster(enemy1, 100, 60 * enemy1.ratio, 3150, 50, 1, 'groundMonster', 3150, 3550),
+        new GroundMonster(enemy1, 100, 60 * enemy1.ratio, 4550, 50, 1, 'groundMonster', 4550, 5000)
+    ];
+
+    enemies.push(catMonsters, blueMonsters, airMonsters, groundMonsters);
+};
+
+export { createEnemy, enemies}
