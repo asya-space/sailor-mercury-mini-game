@@ -74,7 +74,6 @@ class Boss {
             vy: Math.sin(angle) * weaponSpeed
         };
         bossProjectiles.push(projectile);
-        console.log('BOSS SHOOT', projectile);
     }
 
     attack() {
