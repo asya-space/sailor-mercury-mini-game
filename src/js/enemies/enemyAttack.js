@@ -1,10 +1,12 @@
 import { createPurpleStar, createRedStar } from '../weapon/stars/createWeapon.js';
 import { catProjectiles, blueMonsterProjectiles } from '../weapon/balls/ballsMonstersProjectiles.js';
 import { spawnAttacks } from '../functions.js';
+import { enemies } from './enemies.js';
 
-function enemyAttackUpdate(enemy) {
+function enemyAttackUpdate() {
     // start charging
-    if (enemy.state === 'walking' || enemy.state === 'flying') {
+    enemies.forEach(enemy => {
+        if (enemy.state === 'walking' || enemy.state === 'flying') {
         enemy.state = 'charging';
         enemy.timer = enemy.attackCharge;
         return;
@@ -63,6 +65,7 @@ function enemyAttackUpdate(enemy) {
             enemy.state = 'walking';
         };
     };
+    })
 };
 
 export { enemyAttackUpdate };

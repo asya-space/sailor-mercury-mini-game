@@ -7,9 +7,10 @@ import { drawHero } from '../hero/drawHero.js';
 import { drawHeroAttack } from '../hero/heroAttack.js';
 
 import { updateHeroAttacks } from '../hero/heroAttack.js';
-
 import { updateHero } from '../hero/updateHero.js';
 import { updateCamera } from './camera.js';
+
+import { drawEnemy } from '../enemies/updateEnemies.js';
 
 import { boss } from '../boss/boss.js';
 
@@ -30,6 +31,7 @@ function draw() {
     drawPlatforms();
     drawHero();
     drawHeroAttack();
+    drawEnemy(ctx);
     boss.draw(ctx);
 };
 

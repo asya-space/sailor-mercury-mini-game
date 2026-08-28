@@ -3,8 +3,8 @@ import { images } from '../assets/images.js';
 import { preload } from './utils/preload.js';
 import { createGround } from './world/ground.js';
 import { createPlatforms } from './world/platforms.js';
+import { createEnemy } from './enemies/enemies.js';
 import { gameLoop } from './game/loop.js';
-import { createEnemies } from './enemies/enemies.js';
 import './game/input.js';
 
 let gameRunning = false;
@@ -13,6 +13,6 @@ let gameRunning = false;
 preload(images, () => {
     createGround();
     createPlatforms();
-    createEnemies();
+    createEnemy();
     gameLoop();
 });
