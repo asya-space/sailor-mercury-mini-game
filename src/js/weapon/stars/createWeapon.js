@@ -4,7 +4,7 @@ import { getTargetHeroX, getTargetHeroY, weaponStartX, weaponStartY } from '../.
 
 const enemyProjectiles = [];
 
-function createPurpleStar(enemy) {
+function createGroundMonsterStar(enemy) {
     // attacking direction for "bomb" effect
     const angle = Math.atan2( // return angle from -PI to PI, y and x
         getTargetHeroY() - weaponStartY(enemy),
@@ -45,4 +45,4 @@ function createRedStar(enemy) {
     })
 };
 
-export { enemyProjectiles, createPurpleStar, createRedStar };
+export { enemyProjectiles, createGroundMonsterStar, createRedStar };
