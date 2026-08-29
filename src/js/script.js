@@ -5,14 +5,19 @@ import { createGround } from './world/ground.js';
 import { createPlatforms } from './world/platforms.js';
 import { createEnemy } from './enemies/enemies.js';
 import { gameLoop } from './game/loop.js';
+import { platforms } from './world/platforms.js';
 import './game/input.js';
 
 let gameRunning = false;
 // how to follow by state of the game
 
-preload(images, () => {
-    createGround();
-    createPlatforms();
-    createEnemy();
-    gameLoop();
-});
+function initGame() {
+        preload(images, () => {
+        createGround();
+        createGround();
+        createPlatforms();
+        createEnemy();
+        gameLoop();
+    });
+};
+initGame();

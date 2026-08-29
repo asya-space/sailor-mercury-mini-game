@@ -10,7 +10,8 @@ import { updateHeroAttacks } from '../hero/heroAttack.js';
 import { updateHero } from '../hero/updateHero.js';
 import { updateCamera } from './camera.js';
 
-import { drawEnemy } from '../enemies/updateEnemies.js';
+import { enemies } from '../enemies/enemies.js';
+import { drawBallsWeapon } from '../weapon/balls/ballsMonstersProjectiles.js';
 
 import { boss } from '../boss/boss.js';
 
@@ -18,6 +19,8 @@ function update() {
     updateHero();
     updateCamera();
     updateHeroAttacks();
+    enemies.forEach(enemy => enemy.update());
+    enemies.forEach(enemy => enemy.attackUpdate());
     boss.update();
 };
 
@@ -31,7 +34,8 @@ function draw() {
     drawPlatforms();
     drawHero();
     drawHeroAttack();
-    drawEnemy(ctx);
+    enemies.forEach(enemy => enemy.draw());
+    drawBallsWeapon();
     boss.draw(ctx);
 };
 
