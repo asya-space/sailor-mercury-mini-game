@@ -15,5 +15,3 @@ function drawWeapon(array) {
         );
     });
 };
-
-export { drawWeapon };
