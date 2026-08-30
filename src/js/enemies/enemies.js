@@ -1,20 +1,96 @@
 import { platforms } from '../world/platforms.js';
 import { enemy1, enemy2, enemy3, enemy4 } from '../../assets/images.js';
-import { Enemy, AirEnemy, GroundMonster } from './enemyData.js';
+import { AirEnemy, GroundMonster, Monster } from './enemyData.js';
 
-const enemies = [];
+const enemies = [],
+      catProjectiles = [],
+      blueMonsterProjectiles = [];
 
 function createEnemy() {
     const catMonsters = [
-        new Enemy(enemy2, 50, 48 * enemy2.ratio, platforms[6].x, 30, 1, 'catMonster', platforms[6]),
-        new Enemy(enemy2, 50, 48 * enemy2.ratio, platforms[10].x, 30, 1, 'catMonster', platforms[10]),
-        new Enemy(enemy2, 50, 48 * enemy2.ratio, platforms[20].x, 30, 1, 'catMonster', platforms[20])
+        new Monster(
+            enemy2, 
+            50, 
+            48 * enemy2.ratio, 
+            platforms[6].x, 
+            30, 
+            1, 
+            'catMonster', 
+            platforms[6],
+            catProjectiles,
+            '#111be3',
+            '#0a0e64'),
+
+        new Monster(
+            enemy2, 
+            50, 
+            48 * enemy2.ratio, 
+            platforms[10].x, 
+            30, 
+            1, 
+            'catMonster', 
+            platforms[10],
+            catProjectiles,
+            '#111be3',
+            '#0a0e64'
+        ),
+
+        new Monster(
+            enemy2, 
+            50, 
+            48 * enemy2.ratio, 
+            platforms[20].x, 
+            30, 
+            1, 
+            'catMonster', 
+            platforms[20],
+            catProjectiles,
+            '#111be3',
+            '#0a0e64'
+        )
     ];
 
     const blueMonsters = [
-        new Enemy(enemy3, 50, 70 * enemy3.ratio, platforms[12].x, 30, 1, 'blueMonster', platforms[12]),
-        new Enemy(enemy3, 50, 70 * enemy3.ratio, platforms[16].x, 30, 1, 'blueMonster', platforms[16]),
-        new Enemy(enemy3, 50, 70 * enemy3.ratio, platforms[22].x, 30, 1, 'blueMonster', platforms[22])
+        new Monster(
+            enemy3, 
+            50, 
+            70 * enemy3.ratio, 
+            platforms[12].x, 
+            30, 
+            1, 
+            'blueMonster', 
+            platforms[12],
+            blueMonsterProjectiles,
+            '#641068',
+            '#e15fe4'
+        ),
+        new Monster(
+            enemy3, 
+            50, 
+            70 * enemy3.ratio, 
+            platforms[16].x, 
+            30, 
+            1, 
+            'blueMonster', 
+            platforms[16],
+            blueMonsterProjectiles,
+            '#641068',
+            '#e15fe4'
+        ),
+        
+        new Monster(
+            enemy3, 
+            50, 
+            70 * enemy3.ratio, 
+            platforms[22].x, 
+            30, 
+            1, 
+            'blueMonster', 
+            platforms[22],
+            blueMonsterProjectiles,
+            '#641068',
+            '#e15fe4'
+        )
     ];
 
     const airMonsters = [
@@ -36,4 +112,4 @@ function createEnemy() {
     );
 };
 
-export { createEnemy, enemies }
+export { createEnemy, enemies, catProjectiles, blueMonsterProjectiles }
