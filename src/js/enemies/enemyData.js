@@ -1,13 +1,18 @@
-import { GROUND_Y } from '../constants.js';
-import { ctx } from '../utils/canvas.js';
+import { GROUND_Y, weaponSpeed } from '../constants.js';
+import { ctx, WORLD_WIDTH } from '../utils/canvas.js';
 import { cameraX } from '../game/camera.js';
 import { hero } from '../hero/hero.js';
-import { spawnAttacks } from '../functions.js';
-import { createGroundMonsterStar, createRedStar } from '../weapon/stars/createWeapon.js';
+import { 
+    getTargetHeroX, 
+    getTargetHeroY, 
+    weaponStartX, 
+    weaponStartY, 
+    spawnAttacks,
+    drawBalls 
+} from '../functions.js';
+import { redStar, starForPurple } from '../../assets/images.js';
 
-const catProjectiles = [],
-      blueMonsterProjectiles = [],
-      enemyProjectiles = [];
+const enemyProjectiles = [];
 class Enemy {
     constructor(image, w, h, x, hp, damage, type, platforms) {
         this.image = image;
@@ -88,21 +93,7 @@ class Enemy {
             this.shotTimer--;
 
             if (this.shotTimer <= 0) {
-                if (this.type === 'groundMonster') {
-                    createGroundMonsterStar(this);
-                };
-
-                if (this.type === 'airMonster') {
-                    createRedStar(this);
-                };
-
-                if (this.type === 'catMonster') {
-                    spawnAttacks(catProjectiles, this);
-                };
-
-                if (this.type === 'blueMonster') {
-                    spawnAttacks(blueMonsterProjectiles, this);
-                }
+                this.createAttack(); // every monster will has one attack
 
                 this.shotLeft--;
 
@@ -147,7 +138,9 @@ class Enemy {
             this.direction = -1;
         };
     }
-}
+
+    createAttack() {} // just plug, every monster has one's attacking
+};
 
 class AirEnemy extends Enemy {
     constructor(image, w, h, x, hp, damage, type, platforms) {
@@ -159,7 +152,31 @@ class AirEnemy extends Enemy {
         this.weaponOffsetX = 48 / 2;
         this.weaponOffsetY = -2;
         this.left = x - 100;
-    };
+    }
+
+    createAirWeapon() {
+        let dx = getTargetHeroX() - weaponStartX(this),
+        dy = getTargetHeroY() - weaponStartY(this),
+        // normalize length of vector for weapon
+        length = Math.sqrt((dx * dx) + (dy * dy));
+        dx /= length;
+        dy /= length;
+        // attacking vector
+        const vx = dx * weaponSpeed,
+              vy = dy * weaponSpeed;
+        enemyProjectiles.push({
+            img: redStar,
+            x: weaponStartX(this),
+            y: weaponStartY(this),
+            vx,
+            vy,
+            damage: 2 // test
+        });
+    }
+
+    createAttack() {
+        this.createAirWeapon();
+    }
 
     update() {
         super.update();
@@ -180,6 +197,60 @@ class GroundMonster extends Enemy {
         this.left = left;
         this.right = right;
     }
+
+    createGroundWeapon() {
+        const angle = Math.atan2( // return angle from -PI to PI, y and x
+                        getTargetHeroY() - weaponStartY(this),
+                        getTargetHeroX() - weaponStartX(this)
+                    );
+
+        const spread = 0.35, // 20 degrees
+              spreadsArray = [0, spread, spread + spread]; // list of angle displacements
+        spreadsArray.forEach(offset => {
+            enemyProjectiles.push({
+                img: starForPurple,
+                x: weaponStartX(this),
+                y: weaponStartY(this),
+                vx: Math.cos(angle + offset) * weaponSpeed,
+                vy: Math.sin(angle + offset) * weaponSpeed,
+                damage: 1
+            });
+        });
+    }
+
+    createAttack() {
+        this.createGroundWeapon();
+    }
 }
 
-export { Enemy, AirEnemy, GroundMonster };
+class Monster extends Enemy {
+    constructor(image, w, h, x, hp, damage, type, platforms, projectiles, color1, color2) {
+        super(image, w, h, x, hp, damage, type, platforms);
+        this.projectiles = projectiles;
+        this.color1 = color1;
+        this.color2 = color2;
+    }
+
+    drawMonstersBalls() {
+        this.projectiles.forEach(projectile => {
+            drawBalls(projectile.x, projectile.y, this.color1, this.color2);
+        });
+    }
+
+    createAttack() {
+        spawnAttacks(this.projectiles, this);
+    }
+
+    updateWeapon() {
+        for (let i = this.projectiles.length - 1; i >= 0; i--) {
+            const weapon = this.projectiles[i];
+            weapon.x += weapon.speed;
+            
+            if (weapon.x < -100 || weapon.x > WORLD_WIDTH + 100) {
+                this.projectiles.splice(i, 1);
+            }
+        };
+    }
+}
+
+export { Enemy, AirEnemy, GroundMonster, Monster, enemyProjectiles };
