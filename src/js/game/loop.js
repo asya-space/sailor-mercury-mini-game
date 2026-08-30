@@ -10,7 +10,7 @@ import { updateHeroAttacks } from '../hero/heroAttack.js';
 import { updateHero } from '../hero/updateHero.js';
 import { updateCamera } from './camera.js';
 
-import { enemies, catProjectiles, blueMonsterProjectiles } from '../enemies/enemies.js';
+import { enemies } from '../enemies/enemies.js';
 import { Monster, enemyProjectiles } from '../enemies/enemyData.js';
 import { drawWeapon } from '../functions.js';
 import { updateEnemyProjectile } from '../weapon/stars/updateProjectiles.js';
