@@ -2,6 +2,23 @@ import { hero } from './hero/hero.js';
 import { ctx } from './utils/canvas.js';
 import { cameraX } from './game/camera.js';
 
+// draw attacks for GroundMonster and AirMonster
+
+function drawWeapon(array) {
+    array.forEach((weapon) => {
+        const weaponW = 20;
+        const weaponH = weaponW * weapon.img.ratio;
+
+        ctx.drawImage(
+            weapon.img,
+            weapon.x - cameraX,
+            weapon.y,
+            weaponW,
+            weaponH
+        );
+    });
+};
+
 // balls attacks
 function drawBalls(x, y, glowColor, color) {
     //if (hero.cooldown <= 0) return;
@@ -59,4 +76,13 @@ function weaponStartY(enemy) {
     return enemy.y + enemy.weaponOffsetY;
 };
 
-export { drawBalls, spawnAttacks, getTargetHeroX, getTargetHeroY, weaponStartX, weaponStartY, updateBallProjectiles }
+export { 
+    drawBalls, 
+    spawnAttacks, 
+    getTargetHeroX, 
+    getTargetHeroY, 
+    weaponStartX, 
+    weaponStartY, 
+    updateBallProjectiles,
+    drawWeapon 
+}

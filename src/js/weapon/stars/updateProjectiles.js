@@ -1,5 +1,5 @@
 import { WORLD_WIDTH, canvas } from '../../utils/canvas.js';
-
+ // for GroundMonster and AirMonster
 function updateEnemyProjectile(array) {
     for (let i = array.length - 1; i >= 0; i--) {
 
