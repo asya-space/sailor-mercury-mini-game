@@ -2,7 +2,7 @@ import { bossImg, bossStar } from '../../assets/images.js';
 import { cameraX } from '../game/camera.js';
 
 import { weaponSpeed } from '../constants.js';
-import { updateEnemyProjectile } from '../weapon/stars/updateProjectiles.js';
+import { updateEnemyProjectile } from '../enemies/updateProjectiles.js';
 import { getTargetHeroX, getTargetHeroY } from '../functions.js';
 
 export const bossProjectiles = [];
