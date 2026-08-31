@@ -2,13 +2,16 @@ import { bossImg, bossStar } from '../../assets/images.js';
 import { cameraX } from '../game/camera.js';
 
 import { weaponSpeed } from '../constants.js';
-import { updateEnemyProjectile } from '../enemies/updateProjectiles.js';
 import { getTargetHeroX, getTargetHeroY } from '../functions.js';
+
+import { Enemy } from '../enemies/enemyData.js';
+import { hero } from '../hero/hero.js';
 
 export const bossProjectiles = [];
 
-class Boss {
+class Boss extends Enemy {
     constructor(x, y, h, area) {
+        super();
         this.x = x;
         this.y = y;
         this.h = h;
@@ -16,17 +19,10 @@ class Boss {
         this.hp = 200;
         this.phase = 1;
         this.state = 'fly';
-        this.speed = 7;
-        this.alive = true;
         this.area = area;
         this.target = this.getRandomTarget();
-        this.isAttacking = false;
         this.cooldown = 0;
-        this.cooldownTimer = 0;
-        this.chargeTimer = 0;
         this.isCharging = 0;
-        this.shotLeft = 0;
-        this.shotTimer = 0;
     }
 
     draw(ctx) {
@@ -97,17 +93,14 @@ class Boss {
         this.cooldownTimer = 120;
     }
 
-    updateProjectiles() {
-        updateEnemyProjectile(bossProjectiles);
-    }
-
     update() {
-        if (!this.alive) return;
-
         this.move();
         this.checkTarget();
-        this.attack();
-        this.updateProjectiles();
+
+        const distance = Math.abs(hero.x - this.x);
+        if (distance <= this.visionRange) {
+            this.attack();
+        }
     }
 }
 
