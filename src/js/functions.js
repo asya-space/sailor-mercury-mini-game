@@ -25,8 +25,8 @@ function drawBalls(x, y, glowColor, color) {
     ctx.restore();
 };
 
-function spawnAttacks(array, character) {
-    const direction = getTargetHeroX() > character.x ? 1 : -1;
+function spawnAttacks(array, character, direction) {
+    direction ??= getTargetHeroX() > character.x ? 1 : -1;
     array.push({
         x: (direction === 1) ? (character.x + character.w - 10) : (character.x + 10),
         y: character.y + 25,
