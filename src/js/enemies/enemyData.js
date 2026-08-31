@@ -42,6 +42,7 @@ class Enemy {
         this.timer = 0;
         this.shotLeft = 0;
         this.shotTimer = 0;
+        this.speed = 8;
     };
 
     draw() {
@@ -162,8 +163,8 @@ class AirEnemy extends Enemy {
         dx /= length;
         dy /= length;
         // attacking vector
-        const vx = dx * weaponSpeed,
-              vy = dy * weaponSpeed;
+        const vx = dx * this.speed,
+              vy = dy * this.speed;
         enemyProjectiles.push({
             img: redStar,
             x: weaponStartX(this),
@@ -211,8 +212,8 @@ class GroundMonster extends Enemy {
                 img: starForPurple,
                 x: weaponStartX(this),
                 y: weaponStartY(this),
-                vx: Math.cos(angle + offset) * weaponSpeed,
-                vy: Math.sin(angle + offset) * weaponSpeed,
+                vx: Math.cos(angle + offset) * this.speed,
+                vy: Math.sin(angle + offset) * this.speed,
                 damage: 1
             });
         });
@@ -231,25 +232,9 @@ class Monster extends Enemy {
         this.color2 = color2;
     }
 
-    drawMonstersBalls() {
-        this.projectiles.forEach(projectile => {
-            drawBalls(projectile.x, projectile.y, this.color1, this.color2);
-        });
-    }
-
     createAttack() {
+        console.log(this.type, this.x, performance.now());
         spawnAttacks(this.projectiles, this);
-    }
-
-    updateWeapon() {
-        for (let i = this.projectiles.length - 1; i >= 0; i--) {
-            const weapon = this.projectiles[i];
-            weapon.x += weapon.speed;
-            
-            if (weapon.x < -100 || weapon.x > WORLD_WIDTH + 100) {
-                this.projectiles.splice(i, 1);
-            }
-        };
     }
 }
 
