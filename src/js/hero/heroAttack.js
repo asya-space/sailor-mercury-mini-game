@@ -59,7 +59,7 @@ function updateHeroAttacks() {
     };
 
     if (hero.cooldown <= 0) {
-        spawnAttacks(heroProjectiles, hero);
+        spawnAttacks(heroProjectiles, hero, hero.direction);
         hero.cooldown = 10;
     }
 
