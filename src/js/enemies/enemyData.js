@@ -1,5 +1,5 @@
-import { GROUND_Y, weaponSpeed } from '../constants.js';
-import { ctx, WORLD_WIDTH } from '../utils/canvas.js';
+import { GROUND_Y } from '../constants.js';
+import { ctx } from '../utils/canvas.js';
 import { cameraX } from '../game/camera.js';
 import { hero } from '../hero/hero.js';
 import { 
@@ -7,8 +7,7 @@ import {
     getTargetHeroY, 
     weaponStartX, 
     weaponStartY, 
-    spawnAttacks,
-    drawBalls 
+    spawnAttacks
 } from '../functions.js';
 import { redStar, starForPurple } from '../../assets/images.js';
 
@@ -233,7 +232,6 @@ class Monster extends Enemy {
     }
 
     createAttack() {
-        console.log(this.type, this.x, performance.now());
         spawnAttacks(this.projectiles, this);
     }
 }
