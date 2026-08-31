@@ -15,6 +15,8 @@ import { enemyProjectiles } from '../enemies/enemyData.js';
 import { drawWeapon, drawMonstersBalls } from '../enemies/drawWeapon.js';
 import { updateEnemyProjectile, updateMonsterProjectiles } from '../enemies/updateProjectiles.js';
 
+import { bossProjectiles } from '../boss/boss.js';
+
 import { boss } from '../boss/boss.js';
 
 function update() {
@@ -22,9 +24,10 @@ function update() {
     updateCamera();
     updateHeroAttacks();
     enemies.forEach(enemy => enemy.update());
-    updateEnemyProjectile(enemyProjectiles);
-    updateMonsterProjectiles(monsterProjectiles);
+    updateEnemyProjectile(enemyProjectiles); // GroundMonster + AirMonster
+    updateMonsterProjectiles(monsterProjectiles); // catMonster + blueMonster
     boss.update();
+    updateEnemyProjectile(bossProjectiles);
 };
 
 function draw() {
@@ -38,9 +41,10 @@ function draw() {
     drawHero();
     drawHeroAttack();
     enemies.forEach(enemy => enemy.draw())
-    drawWeapon(enemyProjectiles);
-    drawMonstersBalls(monsterProjectiles);
+    drawWeapon(enemyProjectiles); // GroundMonster + AirMonster
+    drawMonstersBalls(monsterProjectiles); // catMonster + blueMonster
     boss.draw(ctx);
+    drawWeapon(bossProjectiles);
 };
 
 export function gameLoop() {
