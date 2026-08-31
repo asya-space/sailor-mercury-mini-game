@@ -2,7 +2,7 @@ import { hero } from './hero.js';
 import { WORLD_WIDTH, WORLD_HEIGHT, ctx } from '../utils/canvas.js';
 import { GROUND_Y, GRAVITY } from '../constants.js';
 import { platforms } from '../world/platforms.js';
-import { enemies } from '../enemies/enemies.js';
+import { enemies } from '../enemies/createEnemies.js';
 import { boss } from '../boss/boss.js';
 import { resolveCollisions } from '../utils/resolveCollisions.js';
 

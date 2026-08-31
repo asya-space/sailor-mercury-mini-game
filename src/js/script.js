@@ -3,7 +3,7 @@ import { images } from '../assets/images.js';
 import { preload } from './utils/preload.js';
 import { createGround } from './world/ground.js';
 import { createPlatforms } from './world/platforms.js';
-import { createEnemy } from './enemies/enemies.js';
+import { createEnemy } from './enemies/createEnemies.js';
 import { gameLoop } from './game/loop.js';
 import { platforms } from './world/platforms.js';
 import './game/input.js';
