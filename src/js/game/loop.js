@@ -10,10 +10,10 @@ import { updateHeroAttacks } from '../hero/heroAttack.js';
 import { updateHero } from '../hero/updateHero.js';
 import { updateCamera } from './camera.js';
 
-import { enemies } from '../enemies/enemies.js';
-import { Monster, enemyProjectiles } from '../enemies/enemyData.js';
-import { drawWeapon } from '../functions.js';
-import { updateEnemyProjectile } from '../weapon/stars/updateProjectiles.js';
+import { enemies, monsterProjectiles } from '../enemies/createEnemies.js';
+import { enemyProjectiles } from '../enemies/enemyData.js';
+import { drawWeapon, drawMonstersBalls } from '../enemies/drawWeapon.js';
+import { updateEnemyProjectile, updateMonsterProjectiles } from '../enemies/updateProjectiles.js';
 
 import { boss } from '../boss/boss.js';
 
@@ -21,13 +21,9 @@ function update() {
     updateHero();
     updateCamera();
     updateHeroAttacks();
-    enemies.forEach(enemy => {
-        enemy.update();
-        if (enemy instanceof Monster) {
-            enemy.updateWeapon();
-        }
-    });
+    enemies.forEach(enemy => enemy.update());
     updateEnemyProjectile(enemyProjectiles);
+    updateMonsterProjectiles(monsterProjectiles);
     boss.update();
 };
 
@@ -41,13 +37,9 @@ function draw() {
     drawPlatforms();
     drawHero();
     drawHeroAttack();
-    enemies.forEach(enemy => {
-        enemy.draw()
-        if (enemy instanceof Monster) {
-            enemy.drawMonstersBalls();
-        }
-    });
+    enemies.forEach(enemy => enemy.draw())
     drawWeapon(enemyProjectiles);
+    drawMonstersBalls(monsterProjectiles);
     boss.draw(ctx);
 };
 
