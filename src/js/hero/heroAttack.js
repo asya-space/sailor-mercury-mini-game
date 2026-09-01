@@ -4,9 +4,10 @@ import { ctx } from '../utils/canvas.js';
 import { cameraX } from '../game/camera.js';
 
 import { stick } from '../../assets/images.js';
-import { drawBalls, spawnAttacks } from '../functions.js';
+import { drawBalls, spawnAttacks } from '../utils/functions.js';
+import { checkHeroAttackHits } from '../game/combat.js';
 
-const heroProjectiles = [];
+let heroProjectiles = [];
 export function drawMoonStick(ctx) {
     const stickW = 10,
           stickH = stickW * stick.ratio,
@@ -70,6 +71,7 @@ function updateHeroAttacks() {
     heroProjectiles.forEach((item) => {
             item.x += item.speed;
     });
+    checkHeroAttackHits();
 };
 
 export { heroProjectiles, drawCharge, drawHeroAttack, updateHeroAttacks }
