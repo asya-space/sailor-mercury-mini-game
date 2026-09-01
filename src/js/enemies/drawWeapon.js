@@ -1,6 +1,6 @@
 import { cameraX } from '../game/camera.js';
 import { ctx } from '../utils/canvas.js';
-import { drawBalls } from '../functions.js';
+import { drawBalls } from '../utils/functions.js';
 
 // draw attacks for GroundMonster and AirMonster
 function drawWeapon(array) {

@@ -2,7 +2,7 @@ import { bossImg, bossStar } from '../../assets/images.js';
 import { cameraX } from '../game/camera.js';
 
 import { weaponSpeed } from '../constants.js';
-import { getTargetHeroX, getTargetHeroY } from '../functions.js';
+import { getTargetHeroX, getTargetHeroY } from '../utils/functions.js';
 
 import { Enemy } from '../enemies/enemyData.js';
 import { hero } from '../hero/hero.js';
@@ -17,6 +17,7 @@ class Boss extends Enemy {
         this.h = h;
         this.w = h * bossImg.ratio;
         this.hp = 200;
+        this.maxHp = 200;
         this.phase = 1;
         this.state = 'fly';
         this.area = area;
