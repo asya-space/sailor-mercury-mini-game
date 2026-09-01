@@ -5,7 +5,8 @@ import { drawGround } from '../world/ground.js';
 import { drawPlatforms } from '../world/platforms.js';
 import { drawHero } from '../hero/drawHero.js';
 import { drawHeroAttack } from '../hero/heroAttack.js';
-
+// hero
+import { hero } from '../hero/hero.js';
 import { updateHeroAttacks } from '../hero/heroAttack.js';
 import { updateHero } from '../hero/updateHero.js';
 import { updateCamera } from './camera.js';
@@ -18,6 +19,12 @@ import { updateEnemyProjectile, updateMonsterProjectiles } from '../enemies/upda
 import { bossProjectiles } from '../boss/boss.js';
 
 import { boss } from '../boss/boss.js';
+// combat
+import { checkEnemyAttackHits } from './combat.js';
+import { drawParticles, updateParticles } from '../effects/particles.js';
+// UI
+import { drawHeroHpBar, drawBossHpBar } from '../UI/drawHealthBar.js';
+import { drawRemainingMonsters } from '../UI/remainingMosnters.js';
 
 function update() {
     updateHero();
@@ -28,6 +35,10 @@ function update() {
     updateMonsterProjectiles(monsterProjectiles); // catMonster + blueMonster
     boss.update();
     updateEnemyProjectile(bossProjectiles);
+    updateParticles();
+    
+    checkEnemyAttackHits(enemyProjectiles, hero);
+    checkEnemyAttackHits(monsterProjectiles, hero);
 };
 
 function draw() {
@@ -39,12 +50,19 @@ function draw() {
     drawGround();
     drawPlatforms();
     drawHero();
+
     drawHeroAttack();
     enemies.forEach(enemy => enemy.draw())
     drawWeapon(enemyProjectiles); // GroundMonster + AirMonster
     drawMonstersBalls(monsterProjectiles); // catMonster + blueMonster
     boss.draw(ctx);
     drawWeapon(bossProjectiles);
+
+    // game ui
+    drawHeroHpBar();
+    drawBossHpBar();
+    drawRemainingMonsters();
+    drawParticles();
 };
 
 export function gameLoop() {
