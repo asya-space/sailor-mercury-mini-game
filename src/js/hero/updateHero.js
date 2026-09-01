@@ -4,7 +4,7 @@ import { GROUND_Y, GRAVITY } from '../constants.js';
 import { platforms } from '../world/platforms.js';
 import { enemies } from '../enemies/createEnemies.js';
 import { boss } from '../boss/boss.js';
-import { resolveCollisions } from '../utils/resolveCollisions.js';
+import { resolveCollisions } from '../game/resolveCollisions.js';
 
 export function updateHero() {
     if (!hero.alive) return;
@@ -24,6 +24,10 @@ export function updateHero() {
         hero.y = GROUND_Y - hero.h;
         hero.velocityY = 0;
         hero.onGround = true;
+    };
+
+    if (hero.hitTimer > 0) {
+        hero.hitTimer--;
     }
 
     // collisions hero with platforms
