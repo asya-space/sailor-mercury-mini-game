@@ -1,6 +1,7 @@
 import { platforms } from '../world/platforms.js';
 import { enemy1, enemy2, enemy3, enemy4 } from '../../assets/images.js';
 import { AirEnemy, GroundMonster, Monster } from './enemyData.js';
+import { ctx, canvas } from '../utils/canvas.js';
 
 const enemies = [],
       monsterProjectiles = [];
@@ -18,7 +19,9 @@ function createEnemy() {
             platforms[6],
             monsterProjectiles,
             '#111be3',
-            '#0a0e64'),
+            '#0a0e64',
+            '#5858ed'
+            ),
 
         new Monster(
             enemy2, 
@@ -31,7 +34,8 @@ function createEnemy() {
             platforms[10],
             monsterProjectiles,
             '#111be3',
-            '#0a0e64'
+            '#0a0e64',
+            '#5858ed'
         ),
 
         new Monster(
@@ -45,7 +49,8 @@ function createEnemy() {
             platforms[20],
             monsterProjectiles,
             '#111be3',
-            '#0a0e64'
+            '#0a0e64',
+            '#5858ed'
         )
     ];
 
@@ -61,7 +66,8 @@ function createEnemy() {
             platforms[12],
             monsterProjectiles,
             '#641068',
-            '#e15fe4'
+            '#540f56',
+            '#0404ff'
         ),
         new Monster(
             enemy3, 
@@ -74,7 +80,8 @@ function createEnemy() {
             platforms[16],
             monsterProjectiles,
             '#641068',
-            '#e15fe4'
+            '#540f56',
+            '#0404ff'
         ),
         
         new Monster(
@@ -88,20 +95,21 @@ function createEnemy() {
             platforms[22],
             monsterProjectiles,
             '#641068',
-            '#e15fe4'
+            '#540f56',
+            '#0404ff'
         )
     ];
 
     const airMonsters = [
-        new AirEnemy(enemy4, 48, 80 * enemy4.ratio, platforms[2].x, 40, 1, 'airMonster', platforms[2]),
-        new AirEnemy(enemy4, 48, 80 * enemy4.ratio, platforms[18].x, 40, 1, 'airMonster', platforms[18])
+        new AirEnemy(enemy4, 48, 80 * enemy4.ratio, platforms[2].x, 40, 1, 'airMonster', platforms[2], '#f04848'),
+        new AirEnemy(enemy4, 48, 80 * enemy4.ratio, platforms[18].x, 40, 1, 'airMonster', platforms[18], '#f04848')
     ];
 
     const groundMonsters = [
-        new GroundMonster(enemy1, 100, 60 * enemy1.ratio, 450, 50, 1, 'groundMonster', 450, 900),
-        new GroundMonster(enemy1, 100, 60 * enemy1.ratio, 1650, 50, 1, 'groundMonster', 1650, 2050),
-        new GroundMonster(enemy1, 100, 60 * enemy1.ratio, 3150, 50, 1, 'groundMonster', 3150, 3550),
-        new GroundMonster(enemy1, 100, 60 * enemy1.ratio, 4550, 50, 1, 'groundMonster', 4550, 5000)
+        new GroundMonster(enemy1, 100, 60 * enemy1.ratio, 450, 50, 1, 'groundMonster', 450, 900, '#df12ba'),
+        new GroundMonster(enemy1, 100, 60 * enemy1.ratio, 1650, 50, 1, 'groundMonster', 1650, 2050, '#df12ba'),
+        new GroundMonster(enemy1, 100, 60 * enemy1.ratio, 3150, 50, 1, 'groundMonster', 3150, 3550, '#df12ba'),
+        new GroundMonster(enemy1, 100, 60 * enemy1.ratio, 4550, 50, 1, 'groundMonster', 4550, 5000, '#df12ba')
     ];
     enemies.push(
         ...catMonsters, 

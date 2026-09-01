@@ -8,6 +8,7 @@ export const hero = {
     w: heroW,
     h: heroH,
     hp: 100,
+    maxHp: 100,
     speed: 5, // speed for moving
     velocityX: 0,
     velocityY: 0,
@@ -17,5 +18,7 @@ export const hero = {
     direction: 1,
     isAttacking: false,
     cooldown: 0,
-    attackDuration: 0
+    attackDuration: 0,
+    hitTimer: 0,
+    color1: '#404bbc'
 }

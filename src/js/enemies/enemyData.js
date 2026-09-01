@@ -8,12 +8,12 @@ import {
     weaponStartX, 
     weaponStartY, 
     spawnAttacks
-} from '../functions.js';
+} from '../utils/functions.js';
 import { redStar, starForPurple } from '../../assets/images.js';
 
-const enemyProjectiles = [];
+let enemyProjectiles = [];
 class Enemy {
-    constructor(image, w, h, x, hp, damage, type, platforms) {
+    constructor(image, w, h, x, hp, damage, type, platforms, deathColor) {
         this.image = image;
         this.platforms = platforms;
         this.w = w;
@@ -21,6 +21,8 @@ class Enemy {
         this.x = platforms ? platforms.x : undefined;
         this.y = platforms ? platforms.y - this.h : undefined; // where is the enemy (depends of his type => 'catMonster', etc.)
         this.hp = hp;
+        this.maxHp = 30;
+        this.hpBarTimer = 0;
         this.damage = damage;
         this.velocityX = 2;
         this.isAttacking = false;
@@ -42,6 +44,7 @@ class Enemy {
         this.shotLeft = 0;
         this.shotTimer = 0;
         this.speed = 8;
+        this.deathColor = deathColor;
     };
 
     draw() {
@@ -55,6 +58,29 @@ class Enemy {
             ctx.drawImage(this.image, this.x - cameraX, this.y, this.w, this.h);
         };
         ctx.restore();
+
+        this.drawHpBar();
+    }
+
+    drawHpBar() {
+        if (this.hpBarTimer <= 0) return;
+        const barWidth = this.w,
+              barHeight = 5,
+              hpPercent = Math.max(0, this.hp / this.maxHp);
+        ctx.fillStyle = '#333';
+        ctx.fillRect(
+            this.x - cameraX,
+            this.y - 10,
+            barWidth,
+            barHeight
+        );
+        ctx.fillStyle = '#66d9ff';
+        ctx.fillRect(
+            this.x - cameraX,
+            this.y - 10,
+            barWidth * hpPercent,
+            barHeight 
+        );
     }
 
     lookingAtHero(hero) {
@@ -137,14 +163,18 @@ class Enemy {
             this.x = this.right;
             this.direction = -1;
         };
+
+        if (this.hpBarTimer > 0) {
+            this.hpBarTimer--;
+        };
     }
 
     createAttack() {} // just plug, every monster has one's attacking
 };
 
 class AirEnemy extends Enemy {
-    constructor(image, w, h, x, hp, damage, type, platforms) {
-        super(image, w, h, x, hp, damage, type, platforms);
+    constructor(image, w, h, x, hp, damage, type, platforms, deathColor) {
+        super(image, w, h, x, hp, damage, type, platforms, deathColor);
         this.flying = true;
         this.flightTime = Math.random() * Math.PI * 2;
         this.baseY = this.y;
@@ -170,6 +200,8 @@ class AirEnemy extends Enemy {
             y: weaponStartY(this),
             vx,
             vy,
+            w: 20,
+            h: 20,
             damage: 2 // test
         });
     }
@@ -188,14 +220,15 @@ class AirEnemy extends Enemy {
 };
 
 class GroundMonster extends Enemy {
-    constructor(image, w, h, x, hp, damage, type, left, right) {
-        super(image, w, h, x, hp, damage, type);
+    constructor(image, w, h, x, hp, damage, type, left, right, deathColor) {
+        super(image, w, h, x, hp, damage, type, deathColor);
         this.x = x;
         this.y = GROUND_Y - this.h;
         this.weaponOffsetX = 2;
         this.weaponOffsetY = 40;
         this.left = left;
         this.right = right;
+        this.deathColor = deathColor;
     }
 
     createGroundWeapon() {
@@ -213,6 +246,8 @@ class GroundMonster extends Enemy {
                 y: weaponStartY(this),
                 vx: Math.cos(angle + offset) * this.speed,
                 vy: Math.sin(angle + offset) * this.speed,
+                w: 20,
+                h: 20,
                 damage: 1
             });
         });
@@ -224,8 +259,8 @@ class GroundMonster extends Enemy {
 }
 
 class Monster extends Enemy {
-    constructor(image, w, h, x, hp, damage, type, platforms, projectiles, color1, color2) {
-        super(image, w, h, x, hp, damage, type, platforms);
+    constructor(image, w, h, x, hp, damage, type, platforms, projectiles, color1, color2, deathColor) {
+        super(image, w, h, x, hp, damage, type, platforms, deathColor);
         this.projectiles = projectiles;
         this.color1 = color1;
         this.color2 = color2;
